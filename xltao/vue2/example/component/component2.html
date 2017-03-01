@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>component2</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>component2-传参数</h1>
+    <hr>
+    <xltao my-name="xltao" v-bind:msg="message"></xltao>
+</div>
+<script>
+    xltao = {
+        template: "<div>我的名字是：{{myName}}<hr>data中，message = {{msg}}</div>",
+        props: ["myName", "msg"]
+    }
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "hello vue ！！"
+        },
+        components: {
+            "xltao": xltao
+        }
+    });
+</script>
+</body>
+</html>

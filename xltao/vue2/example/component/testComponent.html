@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>testComponent</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+<div id="app" style="padding-left: 20px">
+    <h1>testComponent-单向数据流</h1>
+    <hr>
+    <xltao v-bind:msg="message"></xltao>
+</div>
+<script>
+    xltao = {
+        template: "<input v-model='msg' />",
+        props: ["msg"]
+    }
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "hello vue ！！"
+        },
+        components: {
+            "xltao": xltao
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用JQuery实现图片左滑右滑特效</title>
+    <style>
+        * {
+            font-family: 微软雅黑;
+        }
+
+        /*图片大小280x80*/
+        .jiu {
+            width: 180px;
+            overflow: hidden; /*超出部分隐藏*/
+            float: left; /*左浮动*/
+            margin-left: 80px;
+            margin-top: 20px;
+        }
+
+    </style>
+    <script src="../../../js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg" height="80" width="280"/></div>
+</body>
+<script>
+    $('img').hover(
+            /**
+             * 鼠标移入的时候
+             */
+            function () {
+                // 执行动画
+                $(this).animate({'margin-left': '-100px'}, 500);
+            },
+            /**
+             * 鼠标移开的时候
+             */
+            function () {
+                $(this).animate({'margin-left': '-0px'}, 500);
+            });
+</script>
+</html>

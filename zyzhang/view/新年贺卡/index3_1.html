@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        canvas {
+            display: block;
+            cursor: pointer;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -3;
+        }
+
+        input {
+            width: 120px;
+            height: 35px;
+            margin-top: 129px;
+            color: #00B7EE;
+            font-size: 16px;
+            text-align: center;
+            z-index: -2;
+        }
+
+    </style>
+</head>
+<body>
+<canvas id="pane">
+</canvas>
+<div align="center">
+    <input id="inp" type="text" placeholder="请输入姓名...">
+</div>
+<button onclick="btn()">btn</button>
+<script>
+    var canvas = document.getElementById("pane");
+    var ctx = canvas.getContext('2d');
+
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
+    document.getElementById('pane').width = w;
+    document.getElementById('pane').height = h;
+
+    var img = new Image();
+    img.src = "images/cbg.jpg";
+    img.onload = function () {
+        draw(this)
+    }
+    function draw(obj) {
+        var bg = ctx.createPattern(obj, 'no-repeat');
+        ctx.fillStyle = bg;
+        ctx.drawImage(img, 0, 0, w, h);
+//        ctx.fillRect(0, 0, w, h);
+    }
+
+    function btn() {
+
+        var ww = (1920/9)*(w/h);
+        var hh = (2528/9)*(w/h);
+        ctx.font = "15pt 微软雅黑";
+        ctx.fillStyle = "#00B7EE";
+        ctx.fillText("Dear " + document.getElementById('inp').value, ww, hh);
+        document.getElementById('inp').style.display = "none";
+        downloadFile('ship.png', canvas.toDataURL("image/png"));
+    }
+
+    function downloadFile(fileName, content) {
+
+        var aLink = document.createElement('a');
+        var blob = base64Img2Blob(content); //new Blob([content]);
+
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click", false, false);//initEvent 不加后两个参数在FF下会报错
+        aLink.download = fileName;
+        aLink.href = URL.createObjectURL(blob);
+
+        aLink.dispatchEvent(evt);
+    }
+
+    function base64Img2Blob(code) {
+        var parts = code.split(';base64,');
+        var contentType = parts[0].split(':')[1];
+        var raw = window.atob(parts[1]);
+        var rawLength = raw.length;
+
+        var uInt8Array = new Uint8Array(rawLength);
+
+        for (var i = 0; i < rawLength; ++i) {
+            uInt8Array[i] = raw.charCodeAt(i);
+        }
+
+        return new Blob([uInt8Array], {type: contentType});
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body onload="initPage()">
+<div class="container">
+
+    <h3>写博客</h3>
+    <div class="panel panel-default">
+        <div class="panel-heading">写博客</div>
+        <div class="panel-body">
+            <form role="form">
+                <div class="form-group">
+                    <label>标题</label>
+                    <input id="blog_title" type="text" class="form-control" placeholder="标题">
+                    <br/>
+                    <label>内容</label>
+                    <textarea id="blog_content" class="form-control" rows="6" placeholder="博客内容"></textarea>
+                    <br/>
+                    <button id="commit_btn" type="submit" class="btn btn-default">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h3>我的博客</h3>
+    <div class="panel panel-default myblog">抱歉未获取到信息，请检查网络或者服务是否启动
+        <!--<div class="panel-heading myblog_title">标题</div>-->
+        <!--<div class="panel-body myblog_content">内容</div>-->
+    </div>
+</div>
+</body>
+<script src="../js/jquery-1.11.2.min.js"></script>
+<script>
+
+    /**
+     * 获取信息
+     */
+    function initPage() {
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:1337/getdata',
+            success: function (data) {
+                console.log("获取信息成功html")
+                //生成html
+                generateHtml(data);
+            },
+            error: function (err) {
+                console.log("error" + err.toString());
+            }
+        });
+    }
+
+    /**
+     * 提交信息
+     */
+    $('#commit_btn').on('click', function () {
+        var title = $.trim($('#blog_title').val()),
+                content = $.trim($('#blog_content').val()),
+                data = {title: title, content: content};
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:1337/insertdata',
+            data: data,
+            success: function (data) {
+                console.log("success:" + data);
+            }
+        });
+
+    });
+
+
+    /**
+     * 生成html
+     * @param data
+     */
+    function generateHtml(data) {
+        var html = '';
+        for (var i = 0; i < data.length; i++) {
+            html += '<div class="panel-heading">' + data[i].title + '</div>';
+            html += '<div class="panel-body">' + data[i].content + '</div>';
+        }
+        $('.myblog').html(html);
+    }
+
+</script>
+</html>

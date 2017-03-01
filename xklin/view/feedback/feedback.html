@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Title2</title>
+    <style>
+        body{
+        color: #757575;
+        background-color: #f0f0f0;
+        font-size: 16px;
+        margin: 12px 18px;
+        }
+
+        /*电话文本*/
+        div{ 
+        background-color: #ffffff;
+        width: 100%;
+        padding:20px 0px;
+        margin-top: 24px;
+        text-indent:28px;
+        }
+        #tel{
+        outline:none;
+        border:#ffffff;
+        }
+
+        /*文本域*/
+        textarea{
+        width: 96%;
+        height: 144px;
+        resize: none;
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 12px;
+        outline:none;
+        }    
+
+        /*提示字颜色*/
+        input::-webkit-input-placeholder {
+        color:    #7f7f7f;
+        }
+        input:-moz-placeholder {
+        color:    #7f7f7f;
+        }
+        div#DivLength{
+            width: 0;
+            position: relative;
+            top: -90px;
+            left: 87%;
+            background-color:none;
+        }
+    </style>
+    <script>
+        window.onload = setInterval(a, 40);
+        function a() {
+            var span = document.getElementById("span");
+            var textarea1 = document.getElementById("textarea1");
+            span.innerHTML = textarea1.value.length;
+        }
+    </script>
+
+
+</head>
+<body>
+    <label for="textarea1">问题描述</label><br />
+    <textarea name="" id="textarea1" maxlength="144" placeholder="您的意见对我们的产品改善有很大的帮助哦~"  style = "font-size:90%"></textarea>
+    <div id="DivLength">
+        <span id="span">0</span>/144
+    </div>
+    <div>
+        <label for="tel">联系方式</label>
+        <input id="tel" type="text" maxlength="11" placeholder="请输入您的手机号码" style = "font-size:90%" >
+    </div>
+    <footer><p><input type="submit" value="提 交" onclick="sendToJava('textarea1', 'tel')"></p></footer>
+</body>
+<script type="text/javascript">
+
+    function sendToJava(id1, id2){
+       <!--var feedback = document.getElementById(id1).value;-->
+       <!--var tel = document.getElementById(id2).value;-->
+       var str = "反馈内容：" + feedback + "联系方式：" + tel;
+       window.control.fromJs(str)
+    }
+</script>
+<html>

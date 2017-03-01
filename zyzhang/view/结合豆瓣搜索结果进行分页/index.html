@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <style>
+        .pagination > li > a {
+            cursor: pointer;
+        }
+
+        .pagination > li > span {
+            margin-left: 0;
+            color: #ccc;
+            background-color: transparent;
+            cursor: default;
+        }
+
+        .pagination > li > span:hover {
+            color: #ccc;
+            background-color: transparent;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <form class="input-group">
+                    <input type="text" value="javascript" class="form-control" id="bookName" placeholder="请输入书名"
+                           required="required">
+                    <span class="input-group-btn"><button class="btn" id="search">搜索</button></span>
+                </form>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>出版日期</th>
+                    <th>平均分</th>
+                    <th>价格</th>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+
+            <div class="panel-footer"></div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div id="test"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/jquery-1.11.2.min.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script type="text/javascript">
+
+        var partPageModule = ( function ($) {
+
+            var initPager = null,// 初始换分页函数
+                    setPagerHTML = null,// 生成分的页HTML代码
+                    pageClick = null,//　每一页按钮的点击事件
+                    ajax = null, // ajax请求后台数据
+                    renderButton = null,
+                    $content = $('') // 动态生成的页码
+
+            /* 功能：完成初始化
+             * @totalPages 总页数，从后端获取
+             * @currentPage 当前所在的页数
+             */
+            initPager = function (totalPages, currentPage) {
+
+                $content = setPagerHTML({
+                    currentPage: currentPage,
+                    totalPages: totalPages,
+                    pageClick: PageClick
+                });
+                $('#test').empty().append($content);// 得到分页后添加到#test
+            };
+
+            /* 功能：页码点击事件。重新生成所有页码，并且使用ajax获取数据
+             */
+            PageClick = function (totalPages, currentPage) {
+                initPager(totalPages, currentPage);
+                ajax(currentPage);// 使用jsonp请求豆瓣
+            }
+
+            /* 功能：获取信息
+             * @currentPage 当前所在的页数
+             */
+            ajax = function (currentPage) {
+                var
+                        $input = $('#bookName'),
+                        bookName = '',
+                        totalPages = '',
+                        $tbody = $('tbody');
+                bookName = $input.val();
+
+                if (!bookName) {//没有直接返回
+                    $input.focus();
+                    return;
+                } else {
+                    $.ajax({
+                        async: false,
+                        type: 'get',
+                        url: 'https://api.douban.com/v2/book/search',// 豆瓣图书api
+                        dataType: 'JSONP',
+                        data: {
+                            q: bookName,
+                            start: (parseInt(currentPage - 1) * 20 || 0),//取结果的offset 默认0
+                            count: 20 //取结果的条数，默认20，最大100
+                        },
+                        success: function (data) {
+                            var
+                                    html = '',
+                                    books = data.books;
+                            totalPages = Math.ceil(data.total / data.count);
+
+                            books.forEach(function (value, index) {
+                                html += '<tr><td>' +
+                                        '<a href="' + value.alt + '">' + value.title + '</td>' +
+                                        '<td>' + value.author + '</td>' +
+                                        '<td>' + value.pubdate + '</td>' +
+                                        '<th>' + value.rating.average + '</th>' +
+                                        '<td>' + value.price + '</td></tr>';
+                            });
+                            $tbody.html(html);
+                        }
+                    });
+                }
+            };
+
+            /* 功能：
+             * @options 传过来的总页数，当前页数，点击事件对象
+             */
+            setPagerHTML = function (options) {
+                var
+                        currentPage = options.currentPage,
+                        totalPages = options.totalPages,
+                        pageClick = options.pageClick,
+                        $content = $('<ul class="pagination"></ul>'),
+                        startPage = 1,
+                        nextPage = currentPage + 1,//不需要考虑超出问题，后面有条件
+                        prevPage = currentPage - 1;
+
+                /* 逻辑处理，根据点击的不同的页生成不同的ul */
+                if (currentPage == startPage) {//当前是起始页
+                    $content.append('<li><span>首页</span></li>'); // 首页不可用
+                    $content.append('<li><span>上一页</span></li>'); // 上一页不可用
+                } else {
+                    $content.append(renderButton(totalPages, 1, pageClick, '首页')); // 生成首页并绑定事件
+                    $content.append(renderButton(totalPages, prevPage, pageClick, '上一页')); // 生成上一页并绑定事件
+                }
+
+                if (totalPages <= 5 && currentPage <= 5) {// 总页数小于5，当前页小于5，全部生成页码
+                    for (var i = 1; i <= totalPages; i++) {
+                        if (i === currentPage) {
+                            $content.append('<li class="active><span>' + i + '</span></li>');// 当前页不可点击
+                        } else {
+                            $content.append(renderButton(totalPages, i, pageClick, i));// 其他页可以点击
+                        }
+                    }
+                } else if (totalPages > 5 && totalPages - currentPage <= 2) { //总页数大于5，当前页接近总页数，前面显示...,后面显示到结尾的页码
+                    $content.append('<li><span>...</span></li>');
+                    for (var i = totalPages - 4; i <= totalPages; i++) {
+                        if (i === currentPage) {
+                            $content.append('<li class="active"><span>' + i + '</span></li>');
+                        } else {
+                            $content.append(renderButton(totalPages, i, pageClick, i));
+                        }
+                    }
+
+                } else if (totalPages > 5 && currentPage > 3) {//总页数大于5，当前页在中间，前后生成...，生成中间页码
+                    $content.append('<li><span>...</span></li>');
+                    for (var i = currentPage - 2; i < currentPage + 2; i++) {
+                        if (i === currentPage) {
+                            $content.append('<li class="active"><span>' + i + '</span></li>');
+                        } else {
+                            $content.append(renderButton(totalPages, i, pageClick, i));
+                        }
+                    }
+                    $content.append('<li><span>...</span></li>');
+                } else if (totalPages > 5 && currentPage <= 3) {// 总页数大于5，当前页接近第一页，显示前面页码，后面显示...
+                    for (var i = 1; i <= 5; i++) {
+                        if (i === currentPage) {
+                            $content.append('<li class="active"><span>' + i + '</span></li>');
+                        } else {
+                            $content.append(renderButton(totalPages, i, pageClick, i));
+                        }
+                    }
+                    $content.append('<li><span>...</span></li>');
+                }
+
+
+                if (currentPage == totalPages) {//当前页是末页
+                    $content.append('<li><span>下一页</span></li>'); // 下一页不可用
+                    $content.append('<li><span>末页</span></li>'); // 末页不可用
+                } else { // 不是起始页
+                    $content.append(renderButton(totalPages, nextPage, pageClick, '下一页')); // 生成首页并绑定事件
+                    $content.append(renderButton(totalPages, totalPages, pageClick, '末页')); // 生成上一页并绑定事件
+                }
+
+
+                return $content;
+            };
+
+            renderButton = function (totalPages, goPageIndex, eventHander, text) {
+                var $gotoPage = $('<li><a title="第' + goPageIndex + '页">' + text + '</a></li>');
+                $gotoPage.click(function () {
+                    eventHander(totalPages, goPageIndex);
+                })
+                return $gotoPage;
+            }
+
+            return {
+                init: initPager,
+                ajax: ajax
+            }
+        }(jQuery))
+
+        /**
+         * trigger() 方法触发被选元素的指定事件类型。
+         *
+         */
+        $(function () {
+
+            $('#search').click(function (e) {
+                //取消事件的默认动作。（不然search事件一直执行）
+                e.preventDefault();
+                //
+                var totalPage = partPageModule.ajax(1);
+                totalPage = totalPage || 65;
+                partPageModule.init(totalPage, 1);
+
+            })
+
+            //bookName选中按下Enter触发search的点击事件
+            $('#bookName').keyup(function (e) {
+                if (e.keyCode == 13) {
+                    $('#search').trigger('click');
+                }
+            })
+
+            //触发search的点击事件，执行一遍需要取消
+            $('#search').trigger('click');
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSONP实现跨域请求</title>
+    <!--引入JQuery库文件-->
+    <script src="../../js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<button id="btn1">jsonp实现</button>
+<button id="btn2">getJSON实现</button>
+<script>
+    $(function () {
+        $('#btn1').on('click', function () {
+            $.ajax({
+                url: '1-jsonp.php',
+                type: 'GET',
+                dataType: 'JSONP',
+                jsonp: 'callback',
+                success: function (data) {
+                    alert('用户名：' + data.username + '\n' + '邮箱：' + data.email);
+                }
+            });
+        });
+
+        $('#btn2').on('click', function () {
+            $.getJSON('1-jsonp.php?callback=?', function (data) {
+                alert('用户名：' + data.username + '\n' + '邮箱：' + data.email);
+            });
+        });
+    });
+</script>
+</body>
+</html>

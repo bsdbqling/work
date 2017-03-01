@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        canvas {
+            display: block;
+            cursor: pointer;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -3;
+        }
+
+        .main_top{
+            display: block;
+            position: relative;
+        }
+
+        img{
+            position: absolute;
+            width: 100%;
+        }
+
+        input {
+            /*margin: 0 auto;*/
+            position: absolute;
+            /*top: 0; left: 0; bottom: 0; right: 0;*/
+            width: 120px;
+            height: 30px;
+            color: #00B7EE;
+            font-size: 18px;
+            text-align: center;
+            z-index: 1;
+            bottom: 0vw;
+            left: 49%;
+            /*display: block;*/
+            transform: translate(-50%);
+            -ms-transform: translate(-50%); /* IE 9 */
+            -moz-transform: translate(-50%); /* Firefox */
+            -webkit-transform: translate(-50%); /* Safari 和 Chrome */
+            -o-transform: translate(-50%); /* Opera */
+        }
+
+        label {
+            position: absolute;
+            width: 120px;
+            height: 30px;
+            color: #00B7EE;
+            font-size: 22px;
+            text-align: center;
+            z-index: 1;
+            bottom: 3vw;
+            left: 49%;
+            /*display: block;*/
+            transform: translate(-50%);
+            -ms-transform: translate(-50%); /* IE 9 */
+            -moz-transform: translate(-50%); /* Firefox */
+            -webkit-transform: translate(-50%); /* Safari 和 Chrome */
+            -o-transform: translate(-50%); /* Opera */
+        }
+		#button2{
+			transform: translate(-50%);
+            -ms-transform: translate(-50%); /* IE 9 */
+            -moz-transform: translate(-50%); /* Firefox */
+            -webkit-transform: translate(-50%); /* Safari 和 Chrome */
+            -o-transform: translate(-50%); /* Opera */
+           background-color: darkslategray;
+           width: 80px;
+           height: 30px;
+           color: white;
+           font-family: "微软雅黑";
+           border-radius:10px;
+		}
+    </style>
+</head>
+<body>
+<!--<canvas id="pane">-->
+<!--</canvas>-->
+<div class="mian" style="height: 100%;width: 100%" id="test">
+    <div class="main_top" style="height: 29%;width: 100%;padding: 0">
+        <img src="images/shiptop.png" style="padding: 0;height: 100% ;width: 100%">
+        <input id="inp" type="text" placeholder="请输入姓名..." 
+        	style='border-left:0px;border-top:0px;border-right:0px;border-bottom:1px;margin-bottom: 4%;'>
+        <label id="lab";"></label>
+
+    </div>
+    <div class="main_bottom" style="height: 71%;width: 100% ;padding: 0;height: 100%;" >
+    	<img  src="images/shipbottom.png"  id="im2"/>
+    	<button id="button2" style="margin: 20px auto;margin-left: 50%;" onclick="savePic()">保存图片</button>
+        <!--<img src="images/shipbottom.png" style="padding: 0;width: 100%" />--></div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script type="text/javascript" src="js/html2canvas.js" ></script>
+<script>
+    $('#lab').hide();
+    function savePic(){
+    	$('#button2').hide();
+        $('#inp').hide();
+        $('#lab').show();
+        $('#lab').html($('#inp').val());
+        html2canvas($("#test"), {
+            onrendered: function (canvas) {
+                //var url = canvas.toDataURL();
+                //以下代码为下载此图片功能
+                //var triggerDownload = $("<a>").attr("href", url).attr("download", "圣诞贺卡.png").appendTo("body");
+                //triggerDownload[0].click();
+                //triggerDownload.remove();
+                var image = canvas.toDataURL("image/png");
+        		var pHtml = "<img src="+image+" />";
+        		$('#test').html(pHtml);
+            }
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>登录
+收到的参数：email是{email}<br>
+密码是：{pwd}<br>
+<form action="http://127.0.0.1:8000/login" method="post">
+    <table align="center">
+        <tr>
+            <td>email:</td>
+            <td><input type="text" name="email"/></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input type="password" name="pwd"/></td>
+        </tr>
+        <tr>
+            <td align="center"><input type="submit" value="登录"/></td>
+        </tr>
+        <tr>
+            <td align="center"><input type="button" value="跳转页面" onclick="register()"/></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script>
+    function register() {
+        $.ajax({
+            url:"http://127.0.0.1:8000/register",
+            success: function (data, status) {
+                if (status == 'success') {
+                    location.href = 'http://127.0.0.1:8000/register';
+                    alert("success");
+                }
+            },
+            error: function (data, status, e) {
+                if (status == "error") {
+                    location.href = 'http://127.0.0.1:8000/register';
+                    alert("error");
+                }
+            }
+        })
+    }
+</script>
+</html>
+</html>

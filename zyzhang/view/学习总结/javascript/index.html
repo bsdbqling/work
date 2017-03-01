@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习总结</title>
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/docs.min.css">
+</head>
+<body>
+<header class="navbar navbar-static-top bs-docs-nav" role="banner">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                    data-target=".bs-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="" class="navbar-brand">学习总结</a>
+        </div>
+        <nav class="navbar-collapse bs-navbar-collapse collapse in" role="navigation" aria-expanded="true">
+            <ul class="nav navbar-nav">
+                <li><a href="../" class="active">Bootstrap学习</a></li>
+                <li><a href="../javascript">JavaScript学习</a></li>
+                <li><a href="../css">CSS学习</a></li>
+                <li><a href="../jquery">jQuery学习</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://blog.getbootstrap.com"
+                       onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'doc-home-navbar-blog'])"
+                       target="_blank">官方博客</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="bs-docs-header" id="content">
+    <div class="container">
+        <h1>JavaScript介绍</h1>
+        <p>填写相关内容简介，作用。</p>
+    </div>
+</div>
+
+<div class="container-fluid bs-docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top" role="complementary">
+                <ul class="nav bs-docs-sidenav">
+                    <li class="">
+                        <a href="#expression_id">表达式和运算符</a>
+                    </li>
+
+                    <li class="">
+                        <a href="#prototype_id">创建对象</a>
+                        <ul class="nav">
+                            <li class=""><a href="#prototype_id">原型</a></li>
+                            <li class=""><a href="#prototype_id">Object.create()</a></li>
+                            <li class=""><a href="#prototype_id">继承</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="bs-docs-section">
+
+                <h1 id="expression_id">表达式和运算符</h1>
+                <div class="bs-callout bs-callout-warning">
+                    <h4>原始表达式</h4>
+                    <p>js中原始表达式包含常量或直接量、关键字和变量</p>
+                    <h4>对象和数字的初始化表达式</h4>
+                    <p>var x = [[1,2,3],[4,5,6],[7,8,9]]</p>
+                    <p>var y = {a:1,b:2}</p>
+                    <h4>函数定义表达式</h4>
+                    <p>var square = function(x){ return x * x ;}</p>
+                    <h4>属性访问表达式</h4>
+                    <p>expression . indentifier</p>
+                    <p>expression [ expression ]</p>
+                    <p>var o = {x: 1, y: {z: 3}};</p>
+                    <p>var a = [o, 4, [5, 6]];</p>
+                    <p>====> o["x"]=1; a[0].x=1</p>
+                    <h4>调用表达式</h4>
+                    <p>f(0);Math.max(x,y,z);a.sort</p>
+                    <h4>对象创建表达式</h4>
+                    <p>new Object()</p>
+
+                    <h4>算术表达式</h4>
+                    <p>+(加) -（减） *（乘） /（除） %（求余） </p>
+                    <p>&（按位与） |（或） ^（异或） ~（非） <<（左移） >>（带符号右移）>>>(无符号右移) </p>
+                    <p><code> ^ </code>指第一个操作数为true或第二个操作数为true，但两者不能同时为true。如果两个操作数中只有一个
+                        相应位为1（不能同时为1），那么结果中的这一位就是1.</p>
+                    <p><code> ~ </code>一元运算符，位于一个整型参数之前，它将操作数的所有位取反。</p>
+
+                    <h4>关系表达式</h4>
+                    <h5>相等和不等运算符:</h5>
+                    <p><code>==</code>和<code>===</code>用于比较两个值是否相等</p>
+                    <p><code>==</code>相等运算符，检测两个操作数是否相等，可以进行类型转换</p>
+                    <p><code>===</code>严格相等运算符，检测两个操作数是否严格相等</p>
+
+                    <h5>比较运算符:</h5>
+                    <p>< > <= >=</p>
+                    <h5>in运算符：</h5>
+                    <p>var point ={x:1,y:2};<br/>
+                        "x" in point; //true<br/>
+                        "z" in point; //false<br/>
+                        "toString"; //true</p>
+
+                    <h4>逻辑表达式</h4>
+                    <p><code>&& ; || ; !</code></p>
+                    <h4>赋值表达式</h4>
+                    <p><code>=</code></p>
+                    <h4>表达式计算</h4>
+                    <p>eval("3+2")结果==>5</p>
+                    <h4>其它运算符</h4>
+                    <p><code>? : </code>条件运算符： 如： x >0 ? x : -x //取x的绝对值</p>
+                    <p><code>typeof</code>运算符：返回操作数类型的一个字符串 </p>
+                    <p><code>delete</code>运算符：删除对象属性或者数字元素</p>
+                </div>
+
+                <h1 id="prototype_id">创建对象</h1>
+                <div class="bs-callout bs-callout-info">
+                    <h4>原型</h4>
+                    <p>所有通过对象直接创建的对象都具备同一个原型对象，并可以通过javascript代码
+                        <code>Object.prototype</code>获取原型对象的引用</p>
+                    <p>通过关键字new和构造函数调用创建的对象的原型就是构造函数的prototype属性的值。
+                        如：new Array()创建的对象的原型就是Array.prototype</p>
+                    <p>
+                        没有原型的对象为数不多，Object.prototype就是其中之一，它不继承任何属性。</p>
+                    <p> 所有的内置构造函数（以及大部分自己定义的构造函数）都具有一个继承至Object.prototype的原型。</p>
+                    <p><code></code></p>
+
+                    <h4>Object.create()</h4>
+                    <p>创建一个新对象，第一个参数是这个对象的原型；第二个是可选参数，用以对对象的属性进行描述。</p>
+                    <p>如：<code>var o1 = Object.create({x:1,y:2})</code>; //o1继承了属性x和y</p>
+                    <p>如：<code>var o2 = Object.create(null)</code>;//o2不继承任何属性和方法，传入null表示创建一个没有原型的新对象。</p>
+                    <p>如：<code>var o3 = Object.create(Object.prototype)</code>;//创建一个普通空对象 o3和new Object()一样。</p>
+                    <p><code></code></p>
+
+                    <h4>继承</h4>
+                    <p> 举例：（ inherit(o)返回了一个继承自原型对象o的属性的新对象 ）</p>
+                    <p><code>var o = {} </code> // o 从Object.prototype 继承对象属性的方法</p>
+                    <p><code>o.x = 1 </code> // 给o 定义一个属性x</p>
+                    <p><code>var p = inherit(o)</code>; //p继承o和Object.prototype</p>
+                    <p><code>p.y = 2</code> // 给p定义一个属性y</p>
+                    <p><code>var q = inherit(p)</code>; //q继承p、o和Object.prototype</p>
+                    <p><code>q.z = 3</code>; //给q定义一个属性z</p>
+                    <p><code>var s = q.toString()</code>; //toString继承自Object.prototype</p>
+                    <p><code>q.x + q.y </code> //==>3 x和y分别继承自o和p</p>
+                    <p> 举例：</p>
+                    <p><code>var unitcircle = { r:1 }</code>; //一个用来继承的对象</p>
+                    <p><code>var c = inherit(unitcircle)</code>; //c继承属性r</p>
+                    <p><code>c.x = 1 ; c.y = 1 ;</code>// c定义了两个属性</p>
+                    <p><code>c.r = 2</code>; //c覆盖继承原来的属性</p>
+                    <p><code>unitcircle.r </code> // ＝＝》1 原型对象没有修改</p>
+                    <p><code></code></p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../../js/jquery-1.11.2.min.js"></script>
+<script src="../../../js/bootstrap.min.js"></script>
+<script src="../../../js/docs.min.js"></script>
+</body>
+<script>
+    var point = {x: 1, y: 2};
+    "x" in point; //true
+    "z" in point; //false
+    "toString"; //true
+</script>
+</html>

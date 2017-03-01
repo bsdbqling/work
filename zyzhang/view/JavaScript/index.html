@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+<script>
+    /*****************－－－通过使用对象赋值－－－*****************/
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    var p = new Point(3, 4);
+
+    //prototype:返回对象类型原型的引用
+    //通过给构造函数的prototype对象赋值
+    Point.prototype.r = function () {
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+    }
+
+    //    alert('通过使用对象赋值实例：' + p.r());
+    /*****************－－－通过使用对象赋值－－－*****************/
+
+
+    /***************************－－－不可变的原始值和可变的对象－－－**********************/
+            //字符串
+    var s = 'hello';
+    s.toUpperCase();
+    console.log("不可变的原始值:" + s);
+
+    //对象
+    var o = {x: 1};
+    o.x = 2;//修改x的值
+    o.y = 3;//再次更改这个对象，给它增加一个新属性
+    console.log("可变的对象:x=" + o.x + "---y=" + o.y);//x=2;y=3
+
+    //数组
+    var a = [1, 2, 3];
+    a[0] = 0;//更改数组的一个元素
+    a[3] = 4;//给数组增加一个新元素
+    for (var i = 0; i < a.length; i++) {
+        console.log("数组也是可修改的：下标：" + i + "= " + a[i]);//0，2，3，4
+    }
+
+    /***************************－－－不可变的原始值和可变的对象－－－**********************/
+
+    /*****************对象的比较*****************/
+    var o = {x: 1}, p = {x: 1};
+    if (!(o === p)) {
+        console.log("具有相同属性的两个对象永不相等：o===p 返回false");//false
+    }
+
+    var a = [], b = [];
+    if (!(a === b)) {
+        console.log("具有两个单独的空数组：a === b 返回false");
+    }
+
+    var a1 = [];
+    var b1 = a1;
+    b1[0] = 1;
+    if (a1 === b1) {
+        console.log("a1[0]=" + a1[0] + ":::b1[0]=" + b1[0] + "  。 a1===b1返回true因为它们引用同一个数组");
+    }
+    /*****************对象的比较*****************/
+
+
+    /************************************－－－－－－－转换－－－－－－*************************************************/
+    var n = 17;
+    binary_string = n.toString(2);//
+    octal_string = "0" + n.toString(8);//
+    hex_string = "0x" + n.toString(16);//
+    console.log("－－－>17的2进制" + binary_string + "－－－>17的8进制" + octal_string + "－－－>17的16进制" + hex_string)
+
+    var n1 = 123456.789;
+    //toFixed():根据小数点后指定位数将数字转换为字符串
+    console.log("123456.789.toFixed(0)=" + n1.toFixed(0));//123457 取整
+    console.log("123456.789.toFixed(2)=" + n1.toFixed(2));//123456.79 保留2位小数
+    console.log("123456.789.toFixed(5)=" + n1.toFixed(5));//123456.78900
+    //toExponential()：使用指数记数法将数字转换为指数形式的字符串
+    console.log("123456.789.toExponential(1)=" + n1.toExponential(1));//1.2e+5
+    console.log("123456.789.toExponential(3)=" + n1.toExponential(3));//1.235e+5
+    //根据指定的有效数字位数将数字转换成字符串
+    console.log("123456.789.toPrecision(4)=" + n1.toPrecision(4));//1.235e+5
+    console.log("123456.789.toPrecision(7)=" + n1.toPrecision(7));//1.23456.8
+
+    /************************************－－－－－－－转换－－－－－－*************************************************/
+
+    /********************* 作用域 ****************************/
+    var foo = function () {
+        var aa = 3, bb = 5;
+        var bar = function () {
+            var bb = 7, cc = 11;
+            // aa = 3 bb=7 cc=11
+            console.log("aa=" + aa + "  bb=" + bb + "  cc=" + cc);//2
+            aa += bb + cc;
+            // aa=21 bb=7 cc=11
+            console.log("aa=" + aa + "  bb=" + bb + "  cc=" + cc);//3
+        };
+        //cc 没有定义 aa=3 ;bb=5
+        console.log("aa=" + aa + "  bb=" + bb + "  cc=");//1
+        bar();
+        //cc 没有定义 aa=21 ;bb=5
+        console.log("aa=" + aa + "  bb=" + bb + "  cc=");//4
+    };
+    foo();
+    /**
+     * 总结：局部变量在整个函数体始终是有定义的也就是说函数体内局部变量覆盖了同名全局变量。
+     /********************* 作用域 ****************************/
+
+
+    /*********************************－－－－－－－属性访问表达式－－－－－－*********************************************/
+    var o2 = {x: 1, y: {z: 3}};
+    var a2 = [o, 4, [5, 6]];
+    console.log("o2.x=:" + o2.x);//1
+    console.log("o2.y.z=:" + o2.y.z);//3
+    console.log("o2['x']=" + o2["x"]);//1
+    console.log("a2[1]=" + a2[1]);//1
+    console.log("a2[2]['1']=" + a2[2]['1']);//6
+    console.log("a2[0].x=" + a2[0].x);//1
+    /*********************************－－－－－－－属性访问表达式－－－－－－*********************************************/
+
+</script>
+</html>

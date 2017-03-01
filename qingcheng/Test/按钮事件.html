@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		input{
+      margin: 10px;
+      width: 100px;
+      height: 30px;
+    }
+	</style>
+
+	 
+	<body>
+		<input type="button" name="" id="" value="删除" onclick="del()"/><br /><br />
+	<input type="button" name="" id="" value="删除" onclick="addo()"/>
+		<!--删除作用-->
+<!--
+	作者：2427691890@qq.com
+	时间：2016-12-11
+	描述：
+-->
+<!--<script type="text/javascript">
+	//	function del(){
+		//		if(confirm("你确定要删除吗？")){
+		//			alert('删除成功')
+		//		}else{
+		//			alert("取消删除操作")
+		//		}
+		//	}
+</script>-->
+		
+		
+		<!--添加功能-->
+		<script type="text/javascript">
+		var i=0;
+		function addInput(){
+			//使用DOM的创建元素方法
+			var o=document.createElement("input"); 
+
+			o.type = "button" ; 
+
+			o.value = "按钮" + i++ ;
+
+			o.addEventListener("click",addInput);   
+
+			document.body.appendChild(o);
+
+//			o = null;//及时解除不再使用的变量引用,即将其赋值为 null;  
+		}
+		addInput() 
+		</script>
+		
+		<!--单击事件-->
+		<input type="button" name="" id="button1" value="再单击" />
+		<input type="button" name="" id="button2" value="先单机" onclick="input(button1)"/>
+		<script type="text/javascript">
+			function  input(obj){
+				obj.onclick=function(){
+					alert("单击事件成功！")
+				}
+			}
+		</script>
+		
+		<input type="button" name="add" id="add" value="加载" onclick="addweb()"/>
+		<script type="text/javascript">
+			function addweb(){
+				if(document.readyState=="complete"){
+					alert("加载完毕")
+				}
+				else{
+					alert("正在处理")
+				}
+			}
+		</script>
+	</body>
+</html>

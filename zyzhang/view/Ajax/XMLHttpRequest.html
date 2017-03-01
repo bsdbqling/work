@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XMLHttpRequest</title>
+</head>
+<body>
+<label for="username">姓名:</label><input type="text" id="username"/><br/>
+<label for="age">年龄:</label><input type="text" id="age"/><br/>
+<input type="button" value="GET" id="btn" onclick="btn_click();"/>
+<div id="result"></div>
+</body>
+<script type="text/javascript">
+    function btn_click() {
+        //创建XMLHttpRequest对象
+        var xmlHttp = new XMLHttpRequest();
+
+        //获取值
+        var username = document.getElementById("username").value;
+        var age = document.getElementById("age").value;
+
+        //配置XMLHttpRequest对象. open(method,url,async)
+//        xmlHttp.open("get", 'a.php?username='+username+"&age="+age, true);
+        xmlHttp.open("post", 'b.php', true);
+
+        //设置回调函数. onreadystatechange:该属性用来指定xmlHttp对象状态改变时的事件函数
+        xmlHttp.onreadystatechange = function () {
+            // 4:对象读取服务器相应结束。200:服务器响应正常。
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                //responseText:该属性用于获取服务器的响应文本。
+                document.getElementById("result").innerHTML = xmlHttp.responseText;
+            }
+        }
+        //发送请求
+//        xmlHttp.send(null);
+        xmlHttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+        xmlHttp.send('username='+username+'&age='+age);
+    }
+</script>
+</html>

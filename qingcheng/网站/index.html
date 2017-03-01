@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>个人网页Bootstrap 实例 - 响应式的导航栏</title>
+	//图片上传插件
+	<link rel="stylesheet" type="text/css" href="pictureuploadling/webuploader.css"/>
+	<link rel="stylesheet" type="text/css" href="bootstrapvalidator-3/src/css/bootstrapValidator.css"/>
+	<link rel="stylesheet" href="sourse/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
+	<script src="pictureuploadling/upload.js" type="text/javascript" charset="utf-8"></script>
+	<script src="pictureuploadling/webuploader.js" type="text/javascript" charset="utf-8"></script>
+	<script src="sourse/jquery-3.1.1.min.js"></script>
+	<script src="sourse/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrapvalidator-3/src/js/bootstrapValidator.js"></script>
+	<script type="text/javascript" src="bootstrapvalidator-3/src/js/language/zh_CN.js"></script>
+	<!--富文本编辑器-->
+	<!--<link rel="stylesheet" type="text/css" href="baidu/summernote.css"/>
+	<script type="text/javascript" src="baidu/summernote.min.js"></script>
+	<script src="baidu/summernote-zh-CN.js" type="text/javascript" charset="utf-8"></script>-->
+	<!--实用百分比jQuery饼状图插件-->
+	<script src="sourse/js/jsapi.js" type="text/javascript" charset="utf-8"></script>
+	<script src="sourse/js/corechart.js" type="text/javascript" charset="utf-8"></script>
+	<script src="sourse/js/jquery.gvChart-1.0.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="sourse/js/jquery.ba-resize.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//图片上传插件
+	<link rel="stylesheet" type="text/css" href/>
+gvChartInit();
+$(document).ready(function(){
+	$('#myTable5').gvChart({
+		chartType: 'PieChart',
+		gvSettings: {
+			vAxis: {title: 'No of players'},
+			hAxis: {title: 'Month'},
+			width: 500,
+			
+		}
+	});
+});
+</script>
+
+<script type="text/javascript">
+gvChartInit();
+$(document).ready(function(){
+		$('#myTable1').gvChart({
+			chartType: 'PieChart',
+			gvSettings: {
+			vAxis: {title: 'No of players'},
+			hAxis: {title: 'Month'},
+			width:100
+		}
+	});
+});
+</script>
+
+		var ctx=document.getElementById("sale").getContext("2d");
+		window.mypie=new Char(ctx).pie(pData);
+	</script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container"> 
+		<!--导航头部-->
+	<div class="navbar-header">
+		<a class="navbar-brand" href="http://user.qzone.qq.com/2427691890/main">
+			<img src="img/tian.jpg" style="width: 40px;height: 30px;display: inline-block;"/>
+			<!--display: inline-block图片文字并排-->
+			BSDBQLING
+		</a>
+		<!--data-toggle="collapse做什么：隐藏    data-target="#top-navbar"对谁做：ID-->
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar">
+			<span class="sr-only">切换菜单</span>
+			<!--最右侧三条线（汉堡按钮）-->
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	</div>
+	<!--导航头部的主菜单-->
+	<div class="collapse navbar-collapse" id="top-navbar" >
+		<ul class="nav navbar-nav"> 
+			<!--active活动的sr-only可隐藏-->
+			<li class="active"><a href="#">代办<span class="badge">13</span><span class="sr-only">选中个数</span></a></li>  
+			<li class="dropdown">
+				<!--caret三角箭头-->
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					登记<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">员工入职</a></li>
+					<!--横线-->
+					<li class="divider"></li>
+					<li><a href="#">设备资产</a></li>
+					<li class="divider"></li>
+					<li><a href="#">请假</a></li>
+				</ul>
+			</li>
+			<li><a href="#">通知</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					检索 <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">通知</a></li>
+					<li class="divider"></li>
+					<li><a href="#">审批</a></li>
+					<li class="divider"></li>
+					<li><a href="#">预约</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div>
+			<!--导航表单-->
+		<form class="navbar-form navbar-left" role="search">
+			<!--可以自动调到一行-->
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="请输入信息进行检索">
+			</div>
+			<button type="submit" class="btn btn-success">全文检索</button>
+		</form>
+		<!--nav navbar-nav导航下的导航-->
+		<ul class=" nav navbar-nav navbar-right">
+			<li><a href="#">退出</a></li>
+			<li>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">管理员 <span class="caret">
+					
+				</span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">账户信息</a></li>
+					<!--弹出模态对话框data-toggle="model"连接到data-target="#repwdModel"-->
+					<li><a  data-toggle="modal" href="repwd.html" data-target="#repwdModel">修改口令</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	</div>
+	</div>
+</nav>
+<!--fade半透明-->
+<div  class="modal fade" tabindex="-1" id="repwdModel">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
+
+<!--轮播图-->
+<!--data-ride="carousel"自动播放data-interval= "3000"播放时间-->
+<div id="divCarouseal" class="carousel slide" data-ride="carousel" data-interval= "3000">
+	<!--轮播的小圆圈-->
+	<ol class="carousel-indicators">
+			<li data-target="#divCarouseal" data-slide-to="0" class="active"></li>
+			<li data-target="#divCarouseal" data-slide-to="1" ></li>
+			<li data-target="#divCarouseal" data-slide-to="2" ></li>
+	</ol>
+	<div class="carousel-inner" role="listBox" style="text-align: center;">
+		<div class="item active" >
+			<img src="img/ajax.jpg" alt="案例展示" class="img-responsive img-rounded"/ style="margin: 0;height: 300px;width: 100%;left: 0;">
+			<div class="carousel-caption">...</div>
+		</div>
+		<div class="item">
+			<img src="img/boot.jpg" alt="案例展示" class="img-responsive img-rounded" style="margin: 0;height: 300px;width: 100%;left: 0;"/>
+		<div class="carousel-caption">...</div>
+		</div>
+		<div class="item">
+			<img src="img/jquery.jpg" alt="案例展示" class="img-responsive img-rounded" style="margin: 0;height: 300px;width: 100%;left: 0;"/>
+		<div class="carousel-caption">...</div>
+		</div>
+	</div>
+	<!--左右箭头播放图片-->
+	<!--data-slide="prev"前一个-->
+	<div>
+		<a class="left carousel-control" href="#divCarouseal" data-slide="prev">
+		<!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+		</a>
+		<a class="right carousel-control" href="#divCarouseal" data-slide="next">
+		<!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+		</a>
+	</div>
+</div>
+
+<!--搜索框设置-->
+<div class="well">
+	<div class="container">
+		<!--class="form-inline"横向排布-->
+		<form action="" method="post" class="form-inline">
+			<!--表单组-->
+			<div class="form-group">
+				<label for="mobile" class="sr-only">手机号</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						手机号
+					</span>
+					<input type="text" class="form-control" name="" id="mobile" value="" placeholder="请输入手机号"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<!--部门选择按钮-->
+				<div class="btn-group">
+					<a href="tree.html" class="btn btn-default" data-toggle="modal" data-target="#treediglog">部门</a>
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<!--箭头-->
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+							<li><a href="#">清空已选择的部门</a></li>
+						</ul>
+				</div>				
+			</div>
+			<div class="form-group">
+				<label for="endDate" class="sr-only">日期</label>
+				<div class="input-group">
+					<span class="input-group-addon">
+						日期
+					</span>
+					<input type="text" readonly class="form-control date" id="endDate"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="mobile" class="sr-only">手机号</label>
+				<select name="selectType" id="selectType" class="form-control">
+					<option value="0">全部</option>
+					<option value="1" selected="">未处理</option>
+					<option value="2">未通过</option>
+					<option value="3">已通过</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<!--<span class="glyphicon glyphicon-hand-right"></span>图标引用-->
+				<button type="button" class="btn btn-success"><span class="glyphicon glyphicon-search"></span>查询</button>
+				<a class="btn btn-info"><span class="glyphicon glyphicon-search"></span>今天</a>
+				<a class="btn btn-success"><span class="glyphicon glyphicon-search"></span>全部<span class="badge">100</span></a>
+				<a class="btn btn-danger"><span class="glyphicon glyphicon-search"></span>正序</a>
+				<a class="btn btn-primary"><span class="glyphicon glyphicon-hand-right"></span>呼叫同事</a>
+			</div>
+		</form>
+	</div>
+</div>
+	<!--主体内容-->
+<div class="container" >
+	<!--面包屑导航栏-->
+	<ul class="breadcrumb">
+			<li >
+				bsdbqling&nbsp;&nbsp;/&nbsp;&nbsp;个人首页
+			</li>
+	</ul>
+</div>	
+	<!--最新通知列表-->
+	<div class="container">
+	<div class="row" >
+		<div class="col-sm-8">
+			<!--表单-->
+			<div class="panel panel-default" style="text-align: center;">
+				<div class="panel-heading">
+					最新通知列表
+				</div>
+				<div class="panel-body">
+					以下是公司的最新通知，可进行查看、编辑、同时可查看那为职工看过通知
+				</div>
+				<!--模态框表单-->
+				<div class="table-responsive">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>通知名称</th>
+								<th>发布时间</th>
+								<th>发布人</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+						<tr><td>放假通知</td>
+							<td>2017-01-01&nbsp;8:00</td>
+							<td>王慧亚</td>
+							<td >
+								<a href="#" class="btn btn-success">查看</a>
+								<a  class="btn btn-primary" data-toggle="modal" data-target="#eidttz-div" href="eidttz-div.html"><span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</a>
+								<a href="#" class="btn btn-danger">删除</a>
+								<a href="#" class="btn btn-default">谁看我</a>
+							</td>
+						</tr>
+						<tr><td>元旦通知</td>
+							<td>2016-12-20&nbsp;10:00 </td>
+							<td>李东升</td>
+							<td >
+								<a href="#" class="btn btn-success">查看</a>
+								<a  class="btn btn-primary" data-toggle="modal" data-target="#eidttz-div" href="eidttz-div.html"><span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</a>
+								<a href="#" class="btn btn-danger">删除</a>
+								<a href="#" class="btn btn-default">谁看我</a>
+							</td>
+						</tr>
+						<tr><td>放假通知</td>
+							<td>2017-01-01&nbsp; 12:00</td>
+							<td>凌雪儿</td>
+							<td >
+								<a href="#" class="btn btn-success">查看</a>
+								<a  class="btn btn-primary" data-toggle="modal" data-target="#eidttz-div" href="eidttz-div.html"><span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</a>
+								<a href="#" class="btn btn-danger">删除</a>
+								<a href="#" class="btn btn-default">谁看我</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<ul class="pagination">
+				<!--&laquo;左箭头 &raquo;右箭头active当前活动页-->
+				<li class=""><a href="#">&laquo;</a></li>
+				<li class="active"><a href="#">1</a></li>
+				<li class=""><a href="#">2</a></li>
+				<li class=""><a href="#">3</a></li>
+				<li class=""><a href="#">4</a></li>
+				<li class=""><a href="#">5</a></li>
+				<li class=""><a href="#">&raquo;</a></li>
+			</ul>
+		</div>
+
+		<!--<div class="col-sm-3">-->
+			<!--表单-->
+			<!--<div class="panel panel-default" style="text-align: center;margin-left: 0;">
+				<div class="panel-heading">
+					业务统计图（单位：万元）
+				</div>-->
+				
+<div class="container col-sm-4" >
+	<!--面包屑导航栏-->
+	<ul class="breadcrumb">
+			<li >
+				bsdbqling&nbsp;&nbsp;/&nbsp;&nbsp;业务分布图
+			</li>
+	</ul>
+	
+	<table id='myTable5' style="width: 30%;"class="container">
+			<thead>
+				<tr>
+					<th></th>
+					<th>河北</th>
+					<th>河南</th>
+					<th>湖北</th>
+					<th>湖南</th>
+					<th>山东</th>
+					<th>山西</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>1200</th>
+					<td>540</td>
+					<td>300</td>
+					<td>150</td>
+					<td>180</td>
+					<td>120</td>
+					<td>180</td>
+				</tr>
+			</tbody>
+	</table>  
+</div>
+</div>				<!--<div class="panel-footer" style="left: 0;">
+					本年度业务统计图
+				</div>
+		</div>
+	</div>
+	</div>-->
+	<!--fafe透明渐变 dialog对话框-->
+	<div id="eidttz-div" class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+	
+	<!--底部申明-->
+		<footer>
+			<nav class="navbar-default navbar-fixed-bottom text-center">个人网页bsdbqling请勿转发</nav>
+		</footer>
+
+
+<!--栅格图片-->
+<div class="row">
+	<div class="col-lg-3 col-sm-6 col-xs-12"><img src="img/an1.jpg" class="img-responsive" style="margin-bottom: 5px;"/></div>
+	<div class="col-lg-3 col-sm-6 col-xs-12"><img src="img/an2.jpg" class="img-responsive" style="margin-bottom: 5px;"/></div>
+	<div class="col-lg-3 col-sm-6 col-xs-12"><img src="img/an3.jpg" class="img-responsive" style="margin-bottom: 5px;"/></div>
+	<div class="col-lg-3 col-sm-6 col-xs-12"><img src="img/an4.jpg" class="img-responsive" style="margin-bottom: 5px;"/></div>
+</div>
+
+<!--爆料部分-->
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-search">发布爆料</span>
+			</div>
+			<div class="panel-body">
+				<div class="btn-group-lg" style="margin-bottom: 5px">
+					<a href="#" class="btn btn-primary" >图片上传</a>
+				</div>
+				<div id="list" class="upload-list"></div>
+				<form>
+					<textarea rows="6" class="form-control" /></textarea>
+				</form>
+				<div class="btn-group-sm" style="margin-top: 5px;margin-right: 10px;">
+					<a href="#" class="btn btn-primary" >查看历史</a>
+					<a href="#" class="btn btn-success" type="button">确认发布</a>
+					
+					<div class="checkbox checkbox-inline" >
+					<input type="checkbox" name="" id="" value="" />发送全体
+				</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #fff;
+            color: #000;
+            font-family: Helvetica, Arial;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: .2em;
+        }
+
+        .poem {
+            margin: 0 2em;
+        }
+
+        .highlight {
+            background-color: #ccc;
+            border: 1px solid #888;
+            font-style: italic;
+            margin: 0.5em 0;
+            padding: 0.5em;
+        }
+
+    </style>
+    <script src="../../js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<div id="container">
+    <h1>Through the Looking-Glass</h1>
+    <div class="author">by Lewis Carroll</div>
+
+    <div class="chapter" id="chapter-1">
+        <h2 class="chapter-title">1. Looking-Glass House</h2>
+        <p>There was a book lying near Alice on the table, and while she sat watching the White King (for she was still
+            a little anxious about him, and had the ink all ready to throw over him, in case he fainted again), she
+            turned over the leaves, to find some part that she could read, <span class="spoken">“—for it’s all in some language I don’t know,”</span>
+            she said to herself.</p>
+        <p>It was like this.</p>
+        <div class="poem">
+            <h3 class="poem-title">YKCOWREBBAJ</h3>
+            <div id="fred" class="poem-stanza">
+                <div>床前明月光，</div>
+                <div>疑是地上霜。</div>
+                <div>举头望明月，</div>
+                <div>低头思故乡。</div>
+            </div>
+        </div>
+        <p>She puzzled over this for some time, but at last a bright thought struck her. <span class="spoken">“Why, it’s a Looking-glass book, of course! And if I hold it up to a glass, the words will all go the right way again.”</span>
+        </p>
+        <p>This was the poem that Alice read.</p>
+        <div class="poem">
+            <h3 class="poem-title">静夜思</h3>
+            <div class="poem-stanza">
+                <div>床前明月光，</div>
+                <div>疑是地上霜。</div>
+                <div>举头望明月，</div>
+                <div>低头思故乡。</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function addHightlightClass() {
+        $('div.poem-stanza').addClass('highlight');
+    }
+
+    $(document).ready(addHightlightClass);
+</script>
+</html>

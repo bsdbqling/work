@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>栅格系统</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        /*包含*/
+        div[name*=col] {
+            border: 1px solid #f2dede;
+            margin-top: 10px;
+        }
+
+        div[name*=level1] {
+            border: 1px dashed #f20d1d;
+            margin-top: 10px;
+        }
+
+        #log {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: #333;
+            color: #fff;
+            padding: 5px;
+        }
+
+        .rows div {
+            height: 50px;
+        }
+
+        .rows div:nth-child(even) {
+            background: #CCC;
+        }
+
+        .rows div:nth-child(odd) {
+            background: #888;
+        }
+
+        .wrapper {
+        . make-row();
+        }
+
+        .content-main {
+        . make-lg-column(8);
+        }
+
+        .content-secondary {
+        . make-lg-column(3);
+        . make-lg-column-offset(1);
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css" media="screen">
+    <script src="../../../js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<div class="rows">
+    <div name="colname1" class="col-xs-2">col-md-2</div>
+    <div name="colname2" class="col-xs-2">col-md-2</div>
+    <div name="colname3" class="col-xs-2">col-md-2</div>
+    <div name="colname4" class="col-xs-2">col-md-2</div>
+    <div name="colname5" class="col-xs-2">col-md-2</div>
+    <div name="colname6" class="col-xs-2">col-md-2</div>
+</div>
+<div class="rows">
+    <div name="colname9" class="col-xs-4 col-md-2">col-xs-4</div>
+    <div name="colname10" class="col-xs-4 col-md-8">col-xs-4</div>
+    <div name="colname11" class="col-xs-4 col-md-2">col-xs-4</div>
+</div>
+<h5>下面加入container</h5>
+<div class="container">
+    <div class="row">
+        <div name="colname1" class="col-xs-2">col-md-2</div>
+        <div name="colname2" class="col-xs-2">col-md-2</div>
+        <div name="colname3" class="col-xs-2">col-md-2</div>
+        <div name="colname4" class="col-xs-2">col-md-2</div>
+        <div name="colname5" class="col-xs-2">col-md-2</div>
+        <div name="colname6" class="col-xs-2">col-md-2</div>
+    </div>
+    <div class="row">
+        <div name="colname7" class="col-xs-8">col-xs-8</div>
+        <div name="colname8" class="col-xs-4">col-xs-4</div>
+    </div>
+    <div class="row">
+        <div name="colname9" class="col-xs-4">col-xs-4</div>
+        <div name="colname10" class="col-xs-4">col-xs-4</div>
+        <div name="colname11" class="col-xs-4">col-xs-4</div>
+    </div>
+
+    <div class="row">
+        <div name="colname9" class="col-xs-2 col-xs-offset-1">col-xs-2</div>
+        <div name="colname10" class="col-xs-2 col-xs-offset-1">col-xs-2</div>
+        <div name="colname11" class="col-xs-2 col-xs-offset-1">col-xs-2</div>
+    </div>
+
+    <div class="row">
+        <div name="colname9" class="col-xs-1">col-xs-1</div>
+        <div name="colname10" class="col-xs-6">col-xs-6</div>
+        <div name="colname11" class="col-xs-5">col-xs-5</div>
+    </div>
+
+    <div class="rows">
+        <div name="colname9" class="col-xs-4 col-md-2">col-xs-4</div>
+        <div name="colname10" class="col-xs-4 col-md-8">col-xs-4</div>
+        <div name="colname11" class="col-xs-4 col-md-2">col-xs-4</div>
+    </div>
+
+    <div class="rows">
+        <div name="colname9" class="col-xs-4 ">col-xs-4</div>
+        <div name="colname10" class="col-xs-4 ">col-xs-4</div>
+        <div name="colname11" class="col-xs-4 ">col-xs-4</div>
+    </div>
+
+    <h5>嵌套列</h5>
+    <div class="row">
+        <div class="col-xs-9" name="level1">level1
+            <div class="row">
+                <div class="col-lg-8 col-sm-6" name="col">level2</div>
+                <div class="col-lg-4 col-sm-6" name="col">level2</div>
+            </div>
+        </div>
+    </div>
+    <h5>列排序</h5>
+    <div class="row">
+        <div class="col-xs-9 col-xs-push-3" name="col">.col-xs-9 .col-xs-push-3</div>
+        <div class="col-xs-3 col-xs-pull-9" name="col">.col-xs-3 .col-xs-pull-9</div>
+    </div>
+
+    <div class="wrapper">
+        <div class="content-main" name="col">...</div>
+        <div class="content-secondary" name="col">...</div>
+    </div>
+
+</div>
+
+<div id="log">
+    <!-- 定义一个显示屏幕宽度的元素 -->
+</div>
+</body>
+<script>
+    function calculateWidth() {
+        var devicewidth = $(window).width();
+        $('#log').html("设备屏幕宽度：" + devicewidth + "px");
+    }
+
+    calculateWidth();
+
+    $(window).resize(function () {
+        calculateWidth();
+    });
+</script>
+</html>

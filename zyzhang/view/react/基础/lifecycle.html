@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模版</title>
+    <!--react.js是React的核心库-->
+    <script src="../build/react.js" charset="utf-8"></script>
+    <!--react-dom.js的作用是提供与DOM相关的功能-->
+    <script src="../build/react-dom.js" charset="utf-8"></script>
+    <!--browser.min.js的作用是将JSX语法转换成JavaScript语法-->
+    <script src="../build/browser.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<!--React渲染的模版内容会插入到这个DO吗节点中，作为一个容器-->
+<div id="container">
+
+</div>
+</body>
+
+<!--在react开发中，使用JSX，跟javascript不兼容，在使用JSX的地方，要设置type:text/babel-->
+<!--babel是一个转换编译器，ES6转换成可以在浏览器中运行的代码-->
+<script type="text/babel">
+
+    //此次编写react代码
+    var Demo = React.createClass({
+        /**
+         * 一、创建阶段
+         * 流程：
+         *   只调用getDefaultProps方法
+         */
+        getDefaultProps: function () {
+            //在创建的时候被调用，设置this.props的默认值
+            console.log("getDefaultProps()---创建的时候被调用");
+            return {};
+
+        },
+        /**
+         * 二、实例化阶段
+         *   流程：
+         *     getInitialState
+         *     componentWillMount 挂载
+         *     render 渲染
+         *     componentDidMount 挂载完成
+         */
+        getInitialState: function () {
+            //设置this.state的默认值
+            console.log("getInitialState()");
+            return null;
+        },
+        componentWillMount: function () {
+            //在render之前调用
+            console.log("componentWillMount()");
+        },
+        render: function () {
+            //渲染并返回一个虚拟的DOM
+            console.log("render()");
+            return <div>Hello React</div>
+        },
+        componentDidMount: function () {
+            //在render之后调用，在该方法中，React会使用render方法返回虚拟的DOM对象创建真实的DOM结构
+            //可以在这个方法中读取DOM节点
+            console.log("componentDidMount()");
+        },
+        /**
+         * 三、更新阶段
+         *   流程：
+         *     componentWillReceiveProps
+         *     shouldComponentUpdate 组件能否更新 返回false后面三个方法不执行
+         *     componentWillUpdate
+         *     render
+         */
+        componentWillReceiveProps: function () {
+            console.log("componentWillReceiveProps()");
+        },
+        shouldComponentUpdate: function () {
+            console.log("shouldComponentUpdate()");
+            return true;
+        },
+        componentWillUpdate: function () {
+            console.log("componentWillUpdate()");
+        },
+        componentDidUpdate: function () {
+            console.log("componentDidUpdate()");
+        },
+        /**
+         * 四、销毁阶段
+         *   流程：
+         *     componentWillUnmount
+         */
+        componentWillUnmount: function () {
+            console.log("componentWillUnmount()");
+        }
+
+    });
+
+    //第一次创建并加载组件
+    ReactDOM.render(
+            <Demo />,
+            document.getElementById("container")
+    );
+
+    //重新xuanr
+    ReactDOM.render(
+            <Demo />,
+            document.getElementById("container")
+    );
+
+    //移除组件
+    //    ReactDOM.unmountComponentAtNode(document.getElementById("container"));
+
+</script>
+
+</html>

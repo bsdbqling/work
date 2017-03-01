@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 62.5% Verdana, Helvetica, Arial, sans-serif;
+            color: #000;
+            background: #fff;
+        }
+
+        #container {
+            font-size: 1.2em;
+            margin: 10px 2em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            margin-bottom: 0;
+        }
+
+        .switcher {
+            float: left;
+            background-color: #ddd;
+            border: 1px solid #000;
+            margin: 10px;
+            padding: 10px;
+            font-size: .9em;
+        }
+
+        .switcher h3 {
+            margin: .5em 0;
+        }
+
+        #header {
+            clear: both;
+        }
+
+        body.large .chapter {
+            font-size: 1.5em;
+        }
+
+        body.narrow .chapter {
+            width: 250px;
+        }
+
+        .selected {
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+    </style>
+    <script src="../../js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<div id="container">
+
+    <div id="switcher" class="switcher">
+        <h3>Style Switcher</h3>
+        <button id="switcher-default">
+            Default
+        </button>
+        <button id="switcher-narrow">
+            Narrow Column
+        </button>
+        <button id="switcher-large">
+            Large Print
+        </button>
+    </div>
+
+    <div id="header">
+        <h2>Android</h2>
+        <h2 class="subtitle">Android 自定义view学习</h2>
+        <div class="author">by zyzhang</div>
+    </div>
+
+    <div class="chapter" id="chapter-preface">
+        <h3 class="chapter-title">1. onMeasure(int widthMeasureSpec, int heightMeasureSpec)</h3>
+        <p>关于方法中的两个参数值（宽/高测量值）是由高32位和低16位组成:
+            1)高32位保存的值叫specMode（模式）
+            2)低16位为specSize（大小）</p>
+        <p>MeasureSped.EXACTLY:
+            精确模式，指定控件的layout_width或layout_height属性值为固定值（100px，match_parent）。
+        </p>
+        <p>MeasureSpec.AT_MOST:
+            最大模式，属性值为wrap_content时，控件的大小一般随着控件的子控件或内容的变化而变化，此时控件的尺寸不要超过父控件允许的最大尺寸即可。</p>
+        <p>MeasureSpec.UNSPECIFIED:
+            它不指定其大小的测量模式，View想多大就多大，通常情况下在绘制自定义view时才会使用。</p>
+    </div>
+</div>
+</body>
+<script>
+
+    //    $('document').ready(function () {
+    //        $('#switcher-default').addClass('selected').on('click', function () {
+    //            $('body').removeClass('narrow');
+    //            $('body').removeClass('large');
+    //            $('#switcher button').removeClass('selected');
+    //            $(this).addClass('selected');
+    //        });
+    //    });
+    //
+    //    $('document').ready(function () {
+    //        $('#switcher-large').on('click', function () {
+    //            $('body').removeClass('narrow');
+    //            $('body').addClass('large');
+    //            $('#switcher button').removeClass('selected');
+    //            $(this).addClass('selected');
+    //        });
+    //    });
+    //
+    //    $('document').ready(function () {
+    //        $('#switcher-narrow').on('click', function () {
+    //            $('body').addClass('narrow');
+    //            $('body').removeClass('large');
+    //            $('#switcher button').removeClass('selected');
+    //            $(this).addClass('selected');
+    //        });
+    //    });
+
+    //    简化代码
+    $('document').ready(function () {
+        $('#switcher-default').addClass('selected');
+        $('#switcher button').on('click', function () {
+            var bodyClass = this.id.split('-')[1];
+            $('body').removeClass().addClass(bodyClass);
+            $('#switcher button').removeClass('selected');
+            $(this).addClass('selected');
+        });
+
+        $('#switcher h3').click(function () {
+           $('#switcher button').toggleClass('hidden');
+        });
+    });
+</script>
+</html>

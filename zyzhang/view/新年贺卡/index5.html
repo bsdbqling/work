@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test" style="display:none">
+    <img id="starImg" style="height:100%; width:100%;" src="images/cbg.jpg"/>
+</div>
+<canvas id="main" height="730" width="420" style="border:1px solid #d3d3d3;"></canvas>
+<input type="text" id="desc" onblur="show()" value=""/>
+<button onclick="saveImageInfo()">确认生成</button>
+</body>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+    $(function () {
+        show();
+    });
+
+    function show() {
+
+        var mydate = new Date();
+        var date = mydate.getFullYear() + '-' + (mydate.getMonth() + 1) + '-' + mydate.getDate();
+        var mainCtx = getCanvasContext('main');
+        mainCtx.clearRect(0, 0, 1000, 1000);
+
+        var starImg = new Image();
+        starImg.src = $('#starImg').attr('src');
+
+        starImg.onload = function () {
+            //先把图片绘制在这里
+            mainCtx.drawImage(starImg, 0, 0, 420, 730);
+
+            //读取用户的文本
+            if ($('#desc').val()) {
+                mainCtx.font = "small-caps bold 28px STXinwei";
+                //设置用户文本填充颜色
+                mainCtx.fillStyle = "black";
+                //从坐标点(50,50)开始绘制文字
+                mainCtx.fillText($('#desc').val(), 162, 178);
+                //设置时间填充颜色
+//                mainCtx.font = "small-caps bold 16px STXinwei";
+//                mainCtx.fillText(date, 326, 447);
+            }
+        };
+    }
+
+    function getCanvasContext(id) {
+        return document.getElementById(id).getContext("2d");
+    }
+
+    function saveImageInfo() {
+        var mycanvas = document.getElementById("main");
+        var image = mycanvas.toDataURL("image/jpg");
+        //
+        var pHtml = "<img src=" + image + " />";
+        $('#test').html(pHtml);
+    }
+</script>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <style>
+
+        body {
+            padding: 70px;
+        }
+
+        header, footer, nav, div, section, aside, article {
+            border: 0px dotted #eeeeee;
+            border-radius: 5px;
+        }
+
+        a, a:hover {
+            text-decoration: none;
+        }
+
+        .divContent {
+            min-height: 350px;
+        }
+
+        .jumbotron {
+            padding: 20px !important;
+        }
+
+        .item {
+            text-align: -webkit-center;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--导航条,默认样式，固定到页面最上方-->
+<ul class="navbar navbar-default navbar-fixed-top">
+    <!--容器 -->
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a href="个人简历.html" class="navbar-brand">
+                <!--字体图标-->
+                <span class="glyphicon glyphicon-home"></span>
+            </a>
+            <!--触发导航条的展开. data-toggle:交替执行某动作 collapse：展开和收缩-->
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#divNav">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!--折叠菜单 在导航栏中用于折叠收缩的-->
+        <div id="divNav" class="collapse navbar-collapse">
+            <!--导航-->
+            <ul class="nav navbar-nav">
+                <li><a href="#info">基本信息</a></li>
+                <li><a href="#skill">所会技能</a></li>
+                <li><a href="#work">工作经验</a></li>
+                <li><a href="#project">项目展示</a></li>
+                <li><a href="#contact">请联系我</a></li>
+            </ul>
+        </div>
+
+    </div>
+</ul>
+
+<header class="page-header">
+    <h1>个人简历
+        <small>Resume online</small>
+    </h1>
+</header>
+
+<div class="divContent">
+    <!--基本信息-->
+    <div class="row">
+        <h2 id="info" class="lead">基本信息</h2>
+        <div class="col-sm-4">
+            <!--加入引用块-->
+            <blockquote>
+                <h2>张正宜</h2>
+                <footer>android开发工程师（2年）,web前端工程师（半年）</footer>
+            </blockquote>
+            <div class="row text-center">
+                <!--响应式图片根据父容器自动缩放，圆形，相框边-->
+                <img src="../../img/zyzhang.JPG" alt="zyzhang" class="img-responsive img-circle img-thumbnail">
+            </div>
+            <p></p>
+            <div class="row text-center">
+                <div class="col-sm-6">
+                    <h2><abbr title="2年工作经验">2</abbr></h2>
+                </div>
+                <div class="col-sm-6">
+                    <h2><abbr title="参与一个app开发,负责一个app产品开发">2</abbr></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <!--突出的样式显示内容-->
+            <div class="jumbotron">
+                <h2>自我评价</h2>
+                <hr>
+                <p>2年<code>Android</code>开发经验</p>
+                <p>参与和负责两个app产品的开发和上线</p>
+                <p>熟练掌握Java，Html5，CSS3，JavaScript等相关技术</p>
+                <p>喜欢学习新的技术，团队合作与学习能力强</p>
+                <div class="text-right">
+                    <button class="btn btn-primary">了解更多
+                        <span class="glyphicon glyphicon-search"></span></button>
+                </div>
+            </div>
+
+            <!--增加响应式表格 ：表格，边框，斑马线，紧凑型，hover-->
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-condensed table-hover">
+                    <tr>
+                        <td>姓名</td>
+                        <td>张正宜</td>
+                        <td>年龄</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+                        <td>学历</td>
+                        <td>本科</td>
+                        <td>专业</td>
+                        <td>计算机</td>
+                    </tr>
+                    <tr>
+                        <td>手机</td>
+                        <td>18355182597</td>
+                        <td>邮箱</td>
+                        <td>849215986@qq.com</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!--所会技能-->
+    <div class="row">
+        <h2 id="skill" class="lead">技能</h2>
+        <p>
+            <span class="label label-success">Android</span>
+            <span class="label label-success">Java</span>
+        </p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped active" style="width:85%;">
+                <span>掌握</span>
+            </div>
+        </div>
+
+        <p>
+            <span class="label label-info">HTML5</span>
+            <span class="label label-info">JavaScript</span>
+            <span class="label label-info">JQuery</span>
+            <span class="label label-info">CSS3</span>
+            <span class="label label-info">Bootstrap</span>
+            <span class="label label-info">PhotoShop</span>
+        </p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" style="width:60%;">
+                <span>熟悉</span>
+            </div>
+        </div>
+
+        <p>
+            <span class="label label-warning">AngularJS</span>
+        </p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width:35%;">
+                <span>了解</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!--工作经验-->
+    <div class="row">
+        <h2 id="work" class="lead">工作经验</h2>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span>2016年02月－<mark>至今</mark></span>
+                <span class="lead text-primary">安徽一一出行网络科技有限公司</span>
+                <div>Android软件开发工程师
+                    <small>负责app开发，优化</small>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <span>2014年03月－<mark>2014年09月</mark></span>
+                <span class="lead text-primary">安徽科大讯飞信息科技股份有限公司</span>
+                <div>Android软件开发工程师
+                    <small>负责app开发，优化</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!--项目展示 轮播效果实现-->
+    <div class="row">
+        <h2 id="project" class="lead">项目展示</h2>
+        <div class="col-sm-5"></div>
+        <div class="col-sm-3">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img class="img-responsive img-rounded" src="../../img/mysume/one.png" alt="..."/>
+                        <div class="carousel-caption">
+                            <h5 class="text-primary">001</h5>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive img-rounded" src="../../img/mysume/two.png" alt="..."/>
+                        <div class="carousel-caption">
+                            <h5 class="text-primary">002</h5>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive img-rounded" src="../../img/mysume/three.png" alt="..."/>
+                        <div class="carousel-caption">
+                            <h5 class="text-primary">003</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row">
+        <h2 id="contact" class="lead">请联系我</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">如果您对我感兴趣就与我联系吧</div>
+            <div class="panel-body">
+                <div><span>选择我，您肯定没错。手机号：18355182597</span></div>
+            </div>
+            <div class="panel-footer"></div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center">
+    <span>all images and content &copy; 2016</span>
+</footer>
+<script src="../../js/jquery-1.11.2.min.js"></script>
+<script src="../../js/bootstrap.js"></script>
+</body>
+</html>

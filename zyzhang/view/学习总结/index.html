@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习总结</title>
+    <style>
+        .zyzhang {
+            color: #00CCFF;
+        }
+    </style>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/docs.min.css">
+</head>
+<body>
+<header class="navbar navbar-static-top bs-docs-nav" role="banner">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                    data-target=".bs-navbar-collapse">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="" class="navbar-brand">学习总结</a>
+        </div>
+        <nav class="navbar-collapse bs-navbar-collapse collapse in" role="navigation" aria-expanded="true">
+            <ul class="nav navbar-nav">
+                <li><a href="" class="active">Bootstrap学习</a></li>
+                <li><a href="javascript">JavaScript学习</a></li>
+                <li><a href="css">CSS学习</a></li>
+                <li><a href="jquery">jQuery学习</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://blog.getbootstrap.com"
+                       onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click', 'doc-home-navbar-blog'])"
+                       target="_blank">官方博客</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="bs-docs-header" id="content">
+    <div class="container">
+        <h1>Bootstrap介绍</h1>
+        <p>Bootstrap的主要知识点做一个简要总结。</p>
+    </div>
+</div>
+
+<div class="container-fluid bs-docs-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top" role="complementary">
+                <ul class="nav bs-docs-sidenav">
+
+                    <li class="">
+                        <a href="#tabsnavbar_id">导航元素</a>
+                        <ul class="nav">
+                            <li class=""><a href="#tabsnavbar_id">表格导航或标签</a></li>
+                            <li class=""><a href="#pillsnavbar_id">胶囊式的导航菜单</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="#navbar_id">导航栏</a>
+                        <ul class="nav">
+                            <li class=""><a href="#navbar_id">默认导航栏</a></li>
+                            <li class=""><a href="#responsive_navbar_id">响应式的导航栏</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="bs-docs-section">
+
+                <h1 id="tabsnavbar_id">表格导航或标签</h1>
+                <div class="bs-callout bs-callout-warning">
+                    <h4>表格导航或标签</h4>
+                    <p>创建一个标签式的导航菜单：以一个带有 <code>nav nav-table</code></p>
+                    <p>两端对齐的标签页即全屏的效果，只需要向class中添加 <code>nav-justified</code>属性就可以了</p>
+                    <p>垂直展示即只需要添加一个<code>nav-stacked</code>属性就可以了</p>
+                    <p>禁用的链接,有时候不想某些标签被使用，只需要在相应的li标签上添加一个 <code>disabled</code>的class就可以了</p>
+                    <p>添加下拉菜单,比如在最后一个标签那里添加一个下拉菜单
+                        需要的操作是，在相应的li标签添加一个class="dropdown"，然后在里面嵌套一个ul li的组合就可以</p>
+                </div>
+
+                <div class="bs-example bs-navbar-top-example">
+                    <div class="container">
+                        <ul id="mytab" class="nav nav-tabs" role='tablist'>
+                            <li role='presentation' class='active'><a href="">One</a></li>
+                            <li role='presentation'><a href="">Two</a></li>
+                            <li role='presentation'><a href="">Three</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h1 id="pillsnavbar_id">胶囊式的导航菜单</h1>
+                <div class="bs-callout bs-callout-danger">
+                    <h4>胶囊式的导航菜单</h4>
+                    <p>如果需要把标签改成胶囊的样式，只需要使用 <code>nav-pills</code> 代替 <code>nav-tabs</code> 即可</p>
+                </div>
+
+                <div class="bs-example bs-navbar-top-example">
+                    <div class="container">
+                        <ul id="" class="nav nav-pills" role='tablist'>
+                            <li role='presentation' class='active'><a href="">One</a></li>
+                            <li role='presentation'><a href="">Two</a></li>
+                            <li role='presentation'><a href="">Three</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h1 id="navbar_id" class="page-header">默认导航栏</h1>
+                <div class="bs-callout bs-callout-info">
+                    <h4>navbar</h4>
+                    <p>在第一层class中navbar是必须的，其他属性可选如：</p>
+                    <p>添加<code>navbar-default</code>创建的是最基本的导航,不会固定在哪个位置颜色是透明的</p>
+                    <p>添加<code>navbar-inverse</code>类颜色变为黑色(带有黑色背景白色文本的倒置的导航栏)</p>
+                    <p>添加<code>navbar-fixed-top</code>固定在顶部</p>
+                    <p>添加<code>navbar-fixed-bottom</code>固定在底部</p>
+                    <p>添加<code>navbar-static-top</code>静态的顶部(随着页面一起滚动的导航栏)<span class="zyzhang">如本页面顶部的导航栏</span></p>
+                    <p>向div标签中添加一个<code>navbar-header</code>,内部包含带有<code>navbar-brand</code>的a标签元素。这会让文本看起来更大一号。
+                        <span class="zyzhang">如：本页面左上角的"学习总结"</span></p>
+                </div>
+
+                <h1 id="responsive_navbar_id">响应式的导航栏</h1>
+                <div class="bs-callout bs-callout-danger">
+                    <h4>折叠导航栏</h4>
+                    <p>折叠的内容必须包裹在带有 <code>collapse,navbar-collapse</code>。</p>
+                    <p>折叠的导航栏是一个带有navbar-toggle和两个data-元素的按钮（data-toggle data-target）。三个icon-bar的span创建的汉堡按钮</p>
+                    <p><code>data-toggle</code>用于告诉JavaScript需要对按钮做什么。如：collapse表示折叠；drop-down:可设置带下拉的标签页；还有属性如modal,tab。
+                    </p>
+                    <p><code>data-target</code>切换到哪一个元素。通过设置标签的id或者类名</p>
+                    <p><span class="zyzhang">如本页面顶部的导航栏，将页面缩小到一定宽度即可看到效果</span></p>
+                </div>
+                <div class="bs-callout bs-callout-warning">
+                    <h4>增强导航条的可访问性</h4>
+                    <p>为了增强可访问性，务必给每个导航条加上 <code>role="navigation"</code> 属性。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../js/jquery-1.11.2.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/docs.min.js"></script>
+</body>
+<script>
+    <!--表格导航或标签实例-->
+    $("#mytab a").click(function (e) {
+        e.preventDefault();
+        $(this).tab("show");
+    })
+</script>
+</html>

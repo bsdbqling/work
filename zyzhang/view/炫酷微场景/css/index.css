@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.loading {
+    position: relative;
+    height: 100%;
+    background: rgba(1, 1, 1, .6);
+}
+
+canvas {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+}
+
+.wp{
+    position: absolute;
+    left: 0;
+    right:0;
+    bottom:0;
+    top:0;
+    overflow: hidden;
+    display: none;
+}
+
+.page{
+    font-size:70px;
+    text-align: center;
+    line-height: 320px;
+}
+
+.page1{
+    background: red;
+}
+
+.page2{
+    background: goldenrod;
+}
+
+.page3{
+    background: blueviolet;
+}
+
+.page4{
+    background: green;
+}
+
+.page5{
+    background: red;
+}

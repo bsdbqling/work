@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS实现跨域请求</title>
+    <script>
+        //回调的result : Object {id: 1, username: "zyzhang", email: "zhangtaihu101@163.com"}
+        function jsonpCallback(result) {
+            alert('用户名：'+result.username+'\n'+'邮箱：'+result.email);
+        }
+        //动态创建一个script标签
+        var script = document.createElement('script');
+        //跨域请求的地址
+        script.src='1-jsonp.php?callback=jsonpCallback';
+        //加入到head中
+        document.getElementsByTagName('head')[0].appendChild(script);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <style>
+        * {
+            font-family: 微软雅黑;
+        }
+
+        header {
+            height: 60px;
+            line-height: 60px;
+            width: 100%;
+            font-size: 20px;
+            background: #fff;
+        }
+
+        .fl {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .fr {
+            float: right;
+            margin-right: 20px;
+        }
+
+        .imgtop_16 {
+            height: 16px;
+            width: 16px;
+            transform: rotate(-90deg);
+        }
+
+        .info {
+            height: 130px;
+            width: 100%;
+            padding-top: 15px;
+            background: linear-gradient(to right, #2caf83, #259bcd);
+        }
+
+        .info_content {
+            height: 100px;
+            line-height: 100px;
+            width: 100%;
+        }
+
+        #info_money {
+            height: 80px;
+            line-height: 80px;
+            margin-top: 20px;
+        }
+
+        .info_content_span {
+            height: 30px;
+            line-height: 30px;
+            display: block;
+            color: #fff;
+        }
+
+        aside ul {
+            font-size: 20px;
+            line-height: 60px;
+            list-style-type: none;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        aside ul li {
+            text-align: left;
+            width: 100%;
+            margin: 0 auto;
+            background: #fff;
+            padding: 0 2%;
+            border-bottom: 1px solid #f2dede;
+        }
+
+        aside ul li a i {
+            margin-right: 10px;
+        }
+
+        li {
+            display: list-item;
+        }
+
+        .info_list {
+            font-size: 16px;
+            color: #000;
+        }
+
+    </style>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <script src="../../js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<header class="text-center">
+    <span class="fl"><</span>
+    <span class="fr"><</span>
+    <span class="text-center">个人中心</span>
+</header>
+<div class="info">
+    <div class="info_content container">
+        <div id="info_money" class="col-xs-4">
+            <span class="info_content_span" style="font-size: 26px;">1.98元</span>
+            <span class="info_content_span" style="font-size: 16px;">剩余余额</span>
+        </div>
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4" style="text-align: right">
+            <button class="btn btn-default" style="background: transparent;color: #fff">充值</button>
+        </div>
+    </div>
+</div>
+<aside>
+    <ul>
+        <li onclick="window.location.href='topup.html'">
+            <a href="javascript:;">
+                <i><img src="../../img/usercenter/listicon.png" height="32" width=""/></i><span
+                    class="info_list">充值记录</span>
+                <i style="float: right"><img class="imgtop_16" src="../../img/usercenter/down.png"/></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i><img src="../../img/usercenter/listicon.png" height="32" width=""/></i><span
+                    class="info_list">充电纪录</span>
+                <i style="float: right"><img class="imgtop_16" src="../../img/usercenter/down.png"/></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i><img src="../../img/usercenter/listicon.png" height="32" width=""/></i><span
+                    class="info_list">使用帮助</span>
+                <i style="float: right"><img class="imgtop_16" src="../../img/usercenter/down.png"/></i>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <i><img src="../../img/usercenter/listicon.png" height="32" width=""/></i><span
+                    class="info_list">用户协议</span>
+                <i style="float: right"><img class="imgtop_16" src="../../img/usercenter/down.png"/></i>
+            </a>
+        </li>
+    </ul>
+</aside>
+</body>
+<script>
+    //    $('aside ul li').each(function () {
+    //        $(this).click(function () {
+    //            alert($(this).index());
+    //        });
+    //    });
+</script>
+</html>

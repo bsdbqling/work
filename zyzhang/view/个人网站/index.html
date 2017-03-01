@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人网站首页</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+</head>
+<body onload="initPage()" onresize="initPage()">
+<div class="topbar">
+    <div class="container-fluid row center-block ">
+        <div class="col-sm-3 topbar_left" style="font-size: 30px">我的个人网站</div>
+        <div class="pull-right topbar_right">
+            <ul class="login_ul">
+                <li><a href="login.html" target="_top">登录&nbsp;</a>|
+                    <a target="_top" href="register.html">&nbsp;注册</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    <a href="view/main.html" target="mainFrame">首页</a>
+    <a href="view/personalblog.html" target="mainFrame">个人博客</a>
+    <a href="view/myphotoalbum.html" target="mainFrame">我的相册</a>
+    <a href="view/chat.html" target="mainFrame">聊天室</a>
+    <a href="view/info.html" target="mainFrame">个人信息</a>
+</div>
+
+<div class="mainframe">
+    <iframe name="mainFrame" src="view/main.html" width="100%" height="100%" style="border: 0"></iframe>
+</div>
+</body>
+<script>
+    function initPage() {
+        $('.mainframe').height($(window).height() - $(".topbar").height() - $(".main").outerHeight(true) - 20 + "px");
+    }
+</script>
+</html>

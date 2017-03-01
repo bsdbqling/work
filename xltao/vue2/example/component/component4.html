@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>动态引用组件</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>动态引用组件</h1>
+    <hr>
+    <component v-bind:is="who"></component>
+    <a href="javascript:void(0)" @click="changeCom('com1')">组件1</a>
+    <a href="javascript:void(0)" @click="changeCom('com2')">组件2</a>
+    <a href="javascript:void(0)" @click="changeCom('com3')">组件3</a>
+    <a href="javascript:void(0)" @click="changeCom('com4')">组件4</a>
+</div>
+<script>
+    com1 = {
+        template: "<div>第1个组件</div>"
+    }
+
+    com2 = {
+        template: "<div>第2个组件</div>"
+    }
+
+    com3 = {
+        template: "<div>第3个组件</div>"
+    }
+
+    com4 = {
+        template: "<div>第4个组件</div>"
+    }
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            who: "com1"
+        },
+        methods: {
+            changeCom: function(com) {
+                this.who = com;
+            }
+        },
+        components: {
+            "com1": com1,
+            "com2": com2,
+            "com3": com3,
+            "com4": com4
+        }
+    });
+</script>
+</body>
+</html>

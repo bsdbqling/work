@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>computed</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>chameleon run
+<div id="app">
+    <h1>computed</h1>
+    <hr>
+    <div style="padding-left: 20px">
+        <p>原价：{{yuanjia}}</p>
+        <p>折扣：{{zhekou}}</p>
+        <p>现价：{{xianjia}}</p>
+        <p><button @click="add()">加价</button></p>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            yuanjia: 20,
+            zhekou: 0.8
+        },
+        computed: {
+            xianjia: function() {
+                return this.yuanjia * this.zhekou
+            }
+        },
+        methods: {
+            add: function() {
+                this.yuanjia++;
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="Zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>新年快乐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            font-size: 1.5625vw;
+            font-family: "Microsoft Yahei";
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        #music {
+            /*固定定位*/
+            position: fixed;
+            top: 3vh;
+            right: 4vw;
+            width: 15vw;
+            height: 15vw;
+            z-index: 5;
+            border: 4px solid #ef1639;
+            border-radius: 50%;
+        }
+
+        #music > img:first-of-type {
+            position: absolute;
+            top: 24%;
+            right: 2.5%;
+            width: 28.421%;
+        }
+
+        #music > img:last-of-type {
+            position: absolute;
+            width: 79%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+        }
+
+        /*page bg*/
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .page > .bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /*page1*/
+        #page1 {
+            display: none;
+        }
+
+        #page1 > .bg {
+            background: url("images/p1_bg.jpg") no-repeat center center;
+            background-size: 100%;
+        }
+
+        #page1 > .p1_lantern {
+            position: absolute;
+            top: -3.4%;
+            right: 0;
+            left: 0;
+            margin: auto;
+            background: url("images/p1_lantern.png") no-repeat center bottom;
+            background-size: 100%;
+            width: 45vw;
+            height: 71.2vh;
+            font-size: 3.506rem;
+            padding-top: 31vh;
+            text-align: center;
+            /*自动识别*/
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        #page1 > .p1_lantern:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            margin: auto;
+            width: 30vw;
+            height: 30vw;
+            background: #d60b3b;
+            opacity: .5;
+            -webkit-box-shadow: 0 0 10vw 10vw #d60b3b;
+            -moz-box-shadow: 0 0 10vw 10vw #d60b3b;
+            -ms-box-shadow: 0 0 10vw 10vw #d60b3b;
+            -o-box-shadow: 0 0 10vw 10vw #d60b3b;
+            box-shadow: 0 0 10vw 10vw #d60b3b;
+            border-radius: 50%;
+        }
+
+        #page1 > .p1_imooc {
+            position: absolute;
+            background: url("images/p1_imooc.png") no-repeat center center;
+            bottom: 9vh;
+            width: 27.656vw;
+            height: 18.63vh;
+            background-size: 100%;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        #page1 > .p1_words {
+            position: absolute;
+            font-size: 2.134rem;
+            right: 0;
+            left: 0;
+            color: #231815;
+            text-align: center;
+            bottom: 48px;
+        }
+
+        /*page2*/
+        #page2 {
+            display: none;
+        }
+
+        #page2 > .bg {
+            background: url("images/p2_bg.jpg") no-repeat center center;
+            background-size: 100%;
+        }
+
+        #page2 > .p2_circle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            background: url("images/p2_circle_outer.png") no-repeat center center;
+            background-size: 100%;
+            border-radius: 50%;
+            width: 59.357vw;
+            height: 59.375vw;
+        }
+
+        #page2 > .p2_circle:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            background: url("images/p2_circle_middle.png") no-repeat center center;
+            background-size: 100%;
+            border-radius: 50%;
+            width: 45.625vw;
+            height: 45.625vw;
+        }
+
+        #page2 > .p2_circle:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            background: url("images/p2_circle_inner.png") no-repeat center center;
+            background-size: 100%;
+            border-radius: 50%;
+            width: 39.9375vw;
+            height: 39.9375vw;
+        }
+
+        #page2 > .p2_2016 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            background: url("images/p2_2016.png") no-repeat center center;
+            background-size: 100%;
+            width: 27.5vw;
+            height: 6.24vh;
+        }
+
+        /*page3*/
+        #page3 {
+            display: block;
+        }
+
+        #page3 > .bg {
+            background: url("images/p3_bg.jpg") no-repeat center center;
+            background-size: 100%;
+        }
+
+        #page3 > .p3_logo{
+            position: absolute;
+            width: 34.6875vw;
+            height: 6.327vh;
+            top: 7.82vh;
+            right: 0;
+            left: 0;
+            margin: auto;
+            background: url("images/p3_logo.png") no-repeat center center;
+            background-size: 100%;
+        }
+
+        #page3 > .p3_title{
+            position: absolute;
+            width: 48.125vw;
+            height: 50vh;
+            top: 21vh;
+            right: 0;
+            left: 0;
+            margin: auto;
+            background: url("images/p3_title.png") no-repeat center center;
+            background-size: 100%;
+        }
+
+        #page3 > .p3_second{
+            position: absolute;
+            width: 22.8125vw;
+            height: 41.652vh;
+            top: 25.48vh;
+            left: 3.75vw;
+            background: url("images/p3_couplet_second.png") no-repeat center center;
+            background-size: 100%;
+        }
+
+        #page3 > .p3_first{
+            position: absolute;
+            width: 22.8125vw;
+            height: 41.652vh;
+            top: 25.48vh;
+            right: 3.75vw;
+            background: url("images/p3_couplet_first.png") no-repeat center center;
+            background-size: 100%;
+        }
+
+        #page3 > .p3_blessing{
+            position: absolute;
+            width: 32vw;
+            height: 32vw;
+            right: 0;
+            left: 0;
+            margin: auto;
+            bottom: 10vh;
+            border-radius: 50%;
+            background: url("images/p3_blessing.png") no-repeat center center;
+            background-size: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<div id="music">
+    <img src="images/music_pointer.png">
+    <img src="images/music_disc.png">
+</div>
+<div class="page" id="page1">
+    <div class="bg"></div>
+    <div class="p1_lantern">点击屏幕<br>开启好运2017</div>
+    <div class="p1_imooc"></div>
+    <div class="p1_words">2017年张正宜新年特献</div>
+</div>
+
+<div class="page" id="page2">
+    <div class="bg"></div>
+    <div class="p2_circle"></div>
+    <div class="p2_2016"></div>
+</div>
+
+<div class="page" id="page3">
+    <div class="bg"></div>
+    <div class="p3_logo"></div>
+    <div class="p3_title"></div>
+    <div class="p3_second"></div>
+    <div class="p3_first"></div>
+    <div class="p3_blessing"></div>
+</div>
+</body>
+<script>
+    window.onload = function () {
+
+    }
+</script>
+</html>

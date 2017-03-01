@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>充电桩</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/charger/index.css?v=1.0.1">
+</head>
+<body onload="initSize()" onresize="initSize()">
+<div class="container">
+    <!--top-->
+    <header class="text-center">充电</header>
+    <!--content-->
+    <div id="content"></div>
+</div>
+<!--bottom-->
+<div id="menu" class="menu">
+    <div id="one" class="subMenu text-center" onclick="$('header').show()" data-src="charger.html">
+        <img class="menu_img" data-imgname="my"/>
+        <div class="menu_name">充电</div>
+    </div>
+    <div id="two" class="subMenu text-center">
+        <img class="menu_img" data-imgname="translate"/>
+        <div class="menu_name">扫一扫</div>
+    </div>
+    <div id="three" class="subMenu text-center" onclick="$('header').hide()" data-src="personal.html">
+        <img class="menu_img" data-imgname="my"/>
+        <div class="menu_name">我的</div>
+    </div>
+</div>
+<div id="map" hidden="hidden"></div>
+<script src="../../js/jquery-1.11.2.min.js"></script>
+<script src="../../js/charger/comm.js?v=1.0.1"></script>
+<script src="../../js/charger/index.js?v=1.0.1"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript"
+        src="http://webapi.amap.com/maps?v=1.3&key=7c75eca5365b0ca14c6452cd4e891068&plugin=AMap.convertFrom,AMap.Geocoder"></script>
+<script>
+    /**
+     * 初始化微信配置
+     */
+    $.ajax({
+        type:"post",
+        url:url_wechat+"/weChat/getWxConfig.do",
+        data:{
+            url:window.location.href
+        },
+        dataType:'json',
+        success:function (resp) {
+            var para = resp.dataList;
+            wx.config({
+                debug:false,
+                appId:para.appId,
+                timestamp:Number.parseFloat(para.timestamp),
+                nonceStr:para.nonceStr,
+                signature: para.signature,
+                jsApiList: ['scanQRCode']
+            });
+        }
+    });
+</script>
+</body>
+</html>

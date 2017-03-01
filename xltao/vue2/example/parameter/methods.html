@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>自定义组件调用vue方法</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>自定义组件调用vue方法</h1>
+    <hr>
+    <div style="padding-left: 20px">
+        <xltao v-on:click.native="test()"></xltao>
+    </div>
+</div>
+<script>
+    xltao = {
+        template: "<button>按钮</button>"
+    }
+
+    new Vue({
+        el: "#app",
+        data: {
+            message: "hello vue ！！"
+        },
+        methods: {
+            test: function () {
+                alert("按钮点击！");
+            }
+        },
+        components: {
+            "xltao": xltao
+        }
+    });
+</script>
+</body>
+</html>

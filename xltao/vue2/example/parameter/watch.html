@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>购物车</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+</head>
+<style>
+    hr {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    ._tr {
+        background-color: #F5F5F5;
+    }
+
+    .discount {
+        color: red;
+        font-size: 8px;
+    }
+
+    .goods:hover {
+        background-color: #F5F5F5;
+    }
+
+    .count {
+        width: 40px;
+    }
+
+    .btncount{
+        background-color: #F5F5F5;
+        display: inline-block;
+        height: 20px;
+        width: 25px;
+        border: 1px solid #e5e5e5;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none !important;
+        color: #000;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .btncount:hover {
+        color: #ff6600;
+        border-color: #ff6600;
+    }
+</style>
+<body>
+<div id="app">
+    <h1>购物车</h1>
+    <h4 style="color: #ff6600">优惠：满10000减500</h4>
+    <hr>
+    <div style="padding-left: 20px;">
+        <div class="_tr col-xs-12 col-sm-12">
+            <div class="col-xs-3 col-sm-2">名称</div>
+            <div class="col-xs-3 col-sm-3">原价</div>
+            <div class="col-xs-3 col-sm-2">数量</div>
+            <div class="col-xs-3 col-sm-3">金额</div>
+        </div>
+        <template v-for="(tmpItem, index) in items">
+            <div class="goods col-xs-12 col-sm-12" v-bind:class="{'_tr': index % 2 != 0}">
+                <div class="col-xs-3 col-sm-2">{{tmpItem.name}}</div>
+                <div class="col-xs-3 col-sm-3">{{tmpItem.unitPrice}}</div>
+                <div class="col-xs-3 col-sm-2">
+                    <btncount msg="+" @click.native="add(tmpItem)"></btncount>
+                    <input class="count text-center" type="text" v-model="tmpItem.count" />
+                    <btncount msg="-" @click.native="subtract(tmpItem)"></btncount>
+                </div>
+                <div class="col-xs-3 col-sm-3">{{tmpItem.totalPrice}}
+                    <span class="discount" v-if="tmpItem.discount">优惠</span>
+                </div>
+            </div>
+        </template>
+        <hr class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-12 text-right">总金额：{{total}}</div>
+    </div>
+</div>
+<script src="../../assets/js/vue.js"></script>
+<script src="../../assets/component.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            items: [
+                {name: 'apple', count: 1, unitPrice: 4000, totalPrice: 0, discount: false},
+                {name: 'honor', count: 1, unitPrice: 1500, totalPrice: 0, discount: false},
+                {name: 'mi', count: 1, unitPrice: 2000, totalPrice: 0, discount: false}
+            ],
+            item: ''
+        },
+        mounted: function () {
+            for (var i = 0; i < this.items.length; i++) {
+                this.items[i].totalPrice = this.items[i].count * this.items[i].unitPrice;
+            }
+        },
+        methods: {
+            add: function (tmpItem) {
+                this.item = tmpItem;
+                this.item.count++;
+            },
+            subtract: function (tmpItem) {
+                this.item = tmpItem;
+                this.item.count--;
+            }
+        },
+        computed: {
+            total: function () {
+                var sum = 0;
+                for (var i = 0; i < this.items.length; i++) {
+                    sum += this.items[i].totalPrice;
+                }
+                return sum;
+            }
+        },
+        components: {
+            "btncount": btncount
+        }
+    });
+
+    /**
+     * 数据字段监控
+     */
+    vm.$watch("item.count", function (newVal, oldVal) {
+        if (newVal < 1) {
+            vm.item.count = 1;
+        }
+        vm.item.totalPrice = vm.item.unitPrice * vm.item.count;
+    });
+
+    /**
+     * 现在有优惠活动，满10000减500
+     */
+    vm.$watch("item.count", function (newVal, oldVal) {
+        var totalPrice = vm.item.unitPrice * vm.item.count;
+        if (totalPrice >= 10000) {
+            vm.item.discount = true;
+            vm.item.totalPrice = totalPrice - 500;
+        } else {
+            vm.item.discount = false;
+        }
+    });
+</script>
+</body>
+</html>

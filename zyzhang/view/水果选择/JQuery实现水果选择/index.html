@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery实现水果选择</title>
+    <style>
+        * {
+            font-family: 微软雅黑;
+        }
+
+        select {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="../../../js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<form action="javascript:">
+    <select name="" id="s1" size="2">
+        <option value="">西瓜</option>
+        <option value="">苹果</option>
+        <option value="">橙子</option>
+        <option value="">橘子</option>
+        <option value="">梨</option>
+    </select>
+
+    <input type="button" value=" >> " id="btn">
+
+    <select name="" id="s2" size="2">
+
+    </select>
+</form>
+</body>
+<script>
+    $('#btn').click(function () {
+//        $('#s1 option:selected').appendTo('#s2');
+        $('#s1 option:selected').clone().appendTo('#s2');
+    })
+</script>
+</html>

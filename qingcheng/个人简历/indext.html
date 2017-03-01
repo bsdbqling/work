@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+		<title>个人简历</title>
+		<!--头文件的引入-->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<style type="text/css">
+		a{
+			text-decoration: none;
+		}
+		body{
+				padding-top: 70px;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
+	</head>
+	<body class="container">
+		<!--头部设计-->
+		<header>
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<div class="navbar-brand">Personal Resume</div>
+					<!--折叠导航栏-->
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#divNav">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div id="divNav" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<button type="button" class="btn btn-success navbar-btn" data-toggle="modal" data-target="#divModal" title="print">print</button>
+							<div class="modal fade" id="divModal">
+								<div class="modal-dialog">
+									<!--点击Print出现三条导航栏-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+										<h4 class="modal-title">Personal Resume</h4>
+									</div>
+									<div class="modal-body">
+										Print Preview Or Print Config
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary">Print</button>
+									</div>
+								</div>
+							</div>
+							</div>
+							<button type="button" class="btn btn-info navbar-btn" data-toggle="tooltip" data-placement="bottom" title="Download">Download</button>
+							<!--设置提示-->
+							<script type="text/javascript">
+								$('[data-toggle="tooltip"]').tooltip();
+							</script>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		</header>
+		
+		<!--正文区域-->
+		<div class="row">
+			<div class="col-sm-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">Personal Info</div>
+						<div class="panel-body">
+							<img src="img/DSC_4220.JPG" class="img-responsive center-block img-rounded img-thumbnail" alt="Me" style="margin: 0 auto; left: 0; right: 0;"/>
+							<p class="text-center text-primary" style="color: #000000;font-size: larger;font-family:楷体;">程&nbsp;&nbsp;庆</p>
+							<address>
+								<strong>Tarena, Inc</strong><br />
+								<span class="glyphicon glyphicon-home" title="Address">合肥市庐江区</span><br />
+								<span class="glyphicon glyphicon-file" title="PostlCode">10001</span><br />
+								<span class="glyphicon glyphicon-phone" title="Mobile">18452535856</span><br />
+								<span class="glyphicon glyphicon-envelope" title="Email">2427691890@qq.com</span>
+							</address>
+						</div>
+						
+					</div>
+					<div class="panel panel-info">
+						<div class="panel-heading">Personal Skill</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-3">
+									<span class="text-success">HTML5</span>
+								</div>
+								<div class="col-sm-9">
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped progress-bar-success active" style="width: 85%;"></div>
+									</div>
+								</div>
+								
+								<div class="col-sm-3">
+									<span class="text-info">CSS</span>
+								</div>
+								<div class="col-sm-9">
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped progress-bar-info active" style="width: 70%;"></div>
+									</div>
+								</div>
+								
+								<div class="col-sm-3">
+									<span class="text-muted">javascript</span>
+								</div>
+								<div class="col-sm-9">
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" style="width: 80%;"></div>
+									</div>
+								</div>
+								
+								<div class="col-sm-3">
+									<span class="text-muted">bootstrap</span>
+								</div>
+								<div class="col-sm-9">
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" style="width: 70%;"></div>
+									</div>
+								</div>
+								
+								<div class="col-sm-3">
+									<span class="text-muted">jquery</span>
+								</div>
+								<div class="col-sm-9">
+									<div class="progress">
+										<div class="progress-bar progress-bar-striped active" style="width: 60%;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-primary">
+						<div class="panel-heading">Contact Me</div>
+						<div class="panel-body">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="email" class="col-sm-2 control-label" >Email</label>
+									<div class="col-sm-10">
+										<input type="email" name="email" id="email" value="" class="form-control" placeholder="Email"/>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="name" class="col-sm-2 control-label" >Name</label>
+									<div class="col-sm-10">
+										<input type="text" name="email" id="name" value="" class="form-control" placeholder="name"/>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="submit" class="btn btn-primary pull-right"/>Send</button>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="jumbotron">
+					<p class="text-center small">获得奖项<br > 
+					<ul>
+						<li>具备扎实的C/C++语言基础，数据结构、算法等相关知识，对面向对象编程有较高层次 的认识 ；</li>
+						<li>熟悉数据结构、常用算法和C++和面向对象程序设计思想</li>
+						<li>较熟悉TCP/IP网络协议以及socket编程 ；</li>
+						<li>掌握SQL Server和Oracle，熟悉SQL数据查询与存储过程 ；</li>
+						<li>掌握linux下的基本操作命令、文件系统，以及bash shell编程；</li>
+						<li>具备编写基本Makefile、shell脚本的能力；</li>
+						<li>深刻理解软件工程，自觉遵守软件过程。具有良好而规范的编程习惯和技术文档编写习 惯；</li>
+						<li>善于沟通，有良好的表达力和团队合作精神;有独立分析问题与解决问题能力；</li>
+					</ul>
+					</p>
+				</div>
+				
+				<div class="panel-group" id="accordion">
+					
+					<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<a href="#collapseOne" data-toggle="collapse" data-parent = "#accordion">Education</a>
+						</div>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-success">
+									<div class="row">
+										<div class="col-lg-4">2008/09-2011/07</div>
+										<div class="col-lg-4">修远中学</div>
+										<div class="col-lg-4">学生</div>
+									</div>
+								</li>
+							</ul>
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-info">
+									<div class="row">
+										<div class="col-lg-4">2011/07-2014/09</div>
+										<div class="col-lg-4">滁州学院</div>
+										<div class="col-lg-4">学生</div>
+									</div>
+								</li>
+							</ul>
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-danger">
+									<div class="row">
+										<div class="col-lg-4">2014/07-2016/07</div>
+										<div class="col-lg-4">巢湖学院</div>
+										<div class="col-lg-4">学生</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					</div>
+					
+					<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<a href="#collapsetwo" data-toggle="collapse" data-parent = "#accordion">work Experense</a>
+						</div>
+					</div>
+					<div id="collapsetwo" class="panel-collapse collapse">
+						<div class="panel-body">
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-success">
+									<div class="row">
+										<div class="col-lg-4">2008/07-至今</div>
+										<div class="col-lg-4">xxxx 公司</div>
+										<div class="col-lg-4">前端开发工程师</div>
+									</div>
+								</li>
+							</ul>
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-info">
+									<div class="row">
+										<div class="col-lg-4">2008/07-至今</div>
+										<div class="col-lg-4">xxxx 公司</div>
+										<div class="col-lg-4">前端开发工程师</div>
+									</div>
+								</li>
+							</ul>
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-danger">
+									<div class="row">
+										<div class="col-lg-4">2008/07-至今</div>
+										<div class="col-lg-4">xxxx 公司</div>
+										<div class="col-lg-4">前端开发工程师</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					</div>
+					
+					<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<a href="#collapsethree" data-toggle="collapse" data-parent = "#accordion">Education</a>
+						</div>
+						<div id="collapsethree" class="panel-collapse collapse">
+							<div class="panel-body">
+								<div id="divCarouseal" class="carousel slide" data-ride="carousel">
+									<ol class="carousel-indicators">
+										<li data-target="#divCarouseal" data-slide-to="0" class="active"></li>
+										<li data-target="#divCarouseal" data-slide-to="1" ></li>
+										<li data-target="#divCarouseal" data-slide-to="2" ></li>
+									</ol>
+									<div class="carousel-inner">
+										<div class="item active" >
+											<img src="img/b1.jpg" alt="..." class="img-responsive img-rounded"/ style="margin: 0 auto;">
+											<div class="carousel-caption">...</div>
+										</div>
+										<div class="item">
+											<img src="img/b2.jpg" alt="..." class="img-responsive img-rounded"/>
+											<div class="carousel-caption">...</div>
+										</div>
+										<div class="item">
+											<img src="img/b3.jpg" alt="..." class="img-responsive img-rounded"/>
+											<div class="carousel-caption">...</div>
+										</div>
+									</div>
+									
+									<div>
+										<a class="left carousel-control" href="#divCarouseal" data-slide="prev">
+											<span class="glyphicon glyphicon-chevron-left"></span>
+										</a>
+										<a class="right carousel-control" href="#divCarouseal" data-slide="next">
+											<span class="glyphicon glyphicon-chevron-right"></span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div class="jumbotron">
+					<p class="text-center small">参与制作十个以上的项目，详情见<a href="#">Address</a><br > 
+					<ul>
+						<li>具备扎实的C/C++语言基础，数据结构、算法等相关知识，对面向对象编程有较高层次 的认识 ；</li>
+						<li>熟悉数据结构、常用算法和C++和面向对象程序设计思想</li>
+						<li>较熟悉TCP/IP网络协议以及socket编程 ；</li>
+						<li>掌握SQL Server和Oracle，熟悉SQL数据查询与存储过程 ；</li>
+						<li>掌握linux下的基本操作命令、文件系统，以及bash shell编程；</li>
+						<li>具备编写基本Makefile、shell脚本的能力；</li>
+						<li>深刻理解软件工程，自觉遵守软件过程。具有良好而规范的编程习惯和技术文档编写习 惯；</li>
+						<li>善于沟通，有良好的表达力和团队合作精神;有独立分析问题与解决问题能力；</li>
+					</ul>
+					</p>
+			</div>
+			
+		</div>
+		
+		<!--底部申明-->
+		<footer>
+			<nav class="navbar-default navbar-fixed-bottom text-center">个人简历bsdbqling请勿转发</nav>
+		</footer>
+	</body>
+</html>

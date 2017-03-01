@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<head>
+    <title>全局和局部注册vue组件</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <script src="../../assets/js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>全局和局部注册vue组件</h1>
+    <hr>
+    <xltao></xltao>
+    <xltao2></xltao2>
+</div>
+
+<div id="app2">
+    <h1>使用全局组件</h1>
+    <hr>
+    <xltao></xltao>
+</div>
+<script>
+    Vue.component("xltao", {
+        template: "<div id='xltao' style='color: red; font-size: 20px'>用全局方式注册的第一个组件，名叫xltao，所有的vue都能使用</div>"
+    });
+
+    xltao2 = {
+        template: "<div id='xltao2' style='color: #ff6600; font-size: 14px'>局部方式注册的第二个组件，名叫xltao2</div>"
+    }
+
+    new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+            "xltao2": xltao2
+        }
+    });
+
+    new Vue({
+        el: "#app2",
+        data: {},
+        methods: {}
+    });
+</script>
+</body>
+</html>

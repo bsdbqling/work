@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS实现点击标题切换内容</title>
+</head>
+<body>
+<h1>马塞尔名言</h1>
+<p>真正的发现之旅，不在于是否找到新的大陆，而在于能否拥有新的眼光。</p>
+<h1>部门的使命和任务</h1>
+<p>1.以小组形式存在于产品团队。2.以独立的部门形式并行于业务部分。<br> 前者虽然单条产品线协同效率较高，但由于设计团队架构在产品
+    团队之内，难免会盲从于业务，成为业务资源成为不断赶工期的原型工具.<br> 后者虽然能够通过独立团队形成自己的工作文化和思想，但有时
+    也会陷于"我就是用户代言人"的意识陷阱，处于不断与业务方讨论纠结的尴尬境地，双方非常疲惫，最终却不一定能产出高质量的产品质量。</p>
+<p>So,在公司中作为职能部分（function）的UED团队，需要站在用户的角度思辨业务，通过服务内部客户进而服务我们的最终用户，
+    用设计专业帮助业务成功，与业务一起成长</p>
+</body>
+<script>
+    objs = document.getElementsByTagName('h1');
+    ps = document.getElementsByTagName('p');
+
+    for (i = 0; i < objs.length; i++) {
+
+        objs[i].setAttribute('num', 0);
+        objs[i].setAttribute('line', i);
+        ps[i].id=i;
+
+        objs[i].onclick = function () {
+
+            num = parseInt(this.getAttribute('num'));
+            line = this.getAttribute('line');
+            np = document.getElementById(line);
+
+            if (num % 2 == 0) {
+                //p隐藏
+                np.style.display='none';
+            } else {
+                //p显示
+                np.style.display='block';
+            }
+            this.setAttribute('num',num+1);
+        }
+    }
+</script>
+</html>

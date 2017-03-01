@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模版</title>
+    <!--react.js是React的核心库-->
+    <script src="../build/react.js" charset="utf-8"></script>
+    <!--react-dom.js的作用是提供与DOM相关的功能-->
+    <script src="../build/react-dom.js" charset="utf-8"></script>
+    <!--browser.min.js的作用是将JSX语法转换成JavaScript语法-->
+    <script src="../build/browser.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<!--React渲染的模版内容会插入到这个DO吗节点中，作为一个容器-->
+<div id="container">
+
+</div>
+
+<div id="container2">
+
+</div>
+
+<br/>
+
+<div id="container3">
+
+</div>
+
+<br/>
+
+<div id="container4"></div>
+<div id="container5"></div>
+</body>
+
+<!--在react开发中，使用JSX，跟javascript不兼容，在使用JSX的地方，要设置type:text/babel-->
+<!--babel是一个转换编译器，ES6转换成可以在浏览器中运行的代码-->
+<script type="text/babel">
+
+    //此次编写react代码
+    var WebName = React.createClass({
+        render: function () {
+            return <h1>{this.props.webname}</h1>
+        }
+    });
+
+    var WebLink = React.createClass({
+        render: function () {
+            return <a href={this.props.weblink}>{this.props.weblink}</a>
+        }
+    });
+
+    var WebShow = React.createClass({
+        render: function () {
+            return (
+                    <div>
+                        <WebName webname={this.props.wname}/>
+                        <WebLink weblink={this.props.wlink}/>
+                    </div>
+            )
+
+        }
+    });
+
+    //渲染
+    ReactDOM.render(
+            <WebShow wname="zyzhang" wlink="http://blog.csdn.net/zhangsx101/article/details/53172163"/>,
+            document.getElementById('container')
+    );
+
+    /**
+     * ...this.props
+     * props提供的语法糖，可以将父组件中的全部属性复制给子组件
+     */
+
+    var Link = React.createClass({
+        render: function () {
+            return <a {...this.props}>{this.props.name}</a>
+        }
+    });
+
+    ReactDOM.render(
+            <Link href="http://blog.csdn.net/zhangsx101/article/details/53172163" name="我的博客"/>,
+            document.getElementById('container2')
+    )
+
+    /**
+     * 特例：this.props.children
+     * children是一个例外，不是跟组件的属性对应的。表示组件的所有子节点
+     */
+    var ListComponent = React.createClass({
+        render: function () {
+            return (
+                    <ul>
+                        {
+                            /**
+                             * 列表项数量以及内容不确定，在创建模版时才能确定
+                             * 利用this.props.children从父组件获取需要展示的列表项内容
+                             *
+                             * 获取到列表项内容后，需要遍历children，逐项进行设置
+                             * 使用React.Children.map方法
+                             * 返回值：数组对象
+                             */
+                            React.Children.map(this.props.children, function (child) {
+                                //child是遍历得到的父组件的子节点
+                                return <li>{child}</li>
+                            })
+
+                        }
+                    </ul>
+            );
+        }
+    });
+
+    //渲染
+    ReactDOM.render(
+            (<ListComponent>
+                <h1>我的博客</h1>
+                <a href="http://blog.csdn.net/zhangsx101/article/details/53172163">点击打开连接</a>
+            </ListComponent>),
+            document.getElementById('container3')
+    );
+
+    /**
+     * 属性验证 propTypes 组件类属性
+     * 用于验证组件实例的属性是否符合要求
+     */
+    var ShowTitle = React.createClass({
+        propTypes: {
+            title: React.PropTypes.string.isRequired
+        },
+        render: function () {
+            return <h1>{this.props.title}</h1>
+        }
+    });
+
+    //渲染
+    ReactDOM.render(
+            <ShowTitle title="123"/>,
+            document.getElementById('container4')
+    );
+
+    /**
+     * 设置组件属性的默认值
+     * 通过实例getDefaultProps方法，对属性设置默认值
+     */
+    var MyTile = React.createClass({
+       getDefaultProps:function () {
+           return{
+               title:"张正宜"
+           };
+       },
+        render:function () {
+            return <h1>{this.props.title}</h1>
+        }
+    });
+
+    //渲染
+    ReactDOM.render(
+            <MyTile/>,
+            document.getElementById('container5')
+    );
+
+
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<meta charset="utf-8">
+<script src="assets/js/vue.js"></script>
+<style>
+
+</style>
+<div id="app">
+    <ul>
+        <li id="v-if">
+            <div v-if="num == 1">
+                v-if是否显示
+            </div>
+        </li>
+        <li id="v-show">
+            <div v-show="show == 1">
+                v-show是否显示
+            </div>
+        </li>
+        <li id="v-else">
+            <p v-if="num == 1">
+                num == 1
+            </p>
+            <p v-else>
+                num != 1
+            </p>
+        </li>
+
+    </ul>
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            // 数据字段
+            num: 2,
+            show: 1
+        }
+    });
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax实现跨域请求</title>
+    <!--引入JQuery库文件-->
+    <script src="../../js/jquery-1.11.2.min.js"></script>
+</head>
+<body>
+<button id="btn1">ajax请求</button>
+<script>
+    $(function () {
+        $('#btn1').on('click', function () {
+            $.ajax({
+                url: '2-jsonp.php',
+                type: 'GET',
+                dataType:'json',
+                success: function (data) {
+                    console.log(data);
+                    alert('用户名：' + data.username + '\n' + '邮箱：' + data.email);
+                },
+                error: function () {
+                    alert('error')
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

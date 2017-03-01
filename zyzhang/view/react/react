@@ -1,0 +1,264 @@
+React：
+
+  1.描述：
+	react是一个用于构建用户界面的javascript库。
+	主要用于构建UI，相当于MVC中的V（视图），拥有较高的性能，代码逻辑非常简单。
+
+  2.特点：
+    1）声明式设计 − React采用声明范式，可以轻松描述应用。
+    2）高效 − React通过对DOM的模拟，最大限度地减少与DOM的交互。
+    3）灵活 − React可以与已知的库或框架很好地配合。
+    4）JSX − JSX 是 JavaScript 语法的扩展。React 开发不一定使用 JSX ，但我们建议使用它。
+    5）组件 − 通过 React 构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。
+    6）单向响应的数据流 − React 实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。
+
+  3.JSX：
+    javascript XML－一种在react组件内部构件标签的类XML语法，因为可以提高组件的可读性，因此推荐使用。
+
+    如：
+    ReactDOM.render(<h1>Hello React</h1>, document.getElementById('container'));
+
+  4.render
+    对于一个组件来说，render是唯一一个必需的方法，render方法返回的结果不是真正的DOM，而是一个虚拟的表现，react随后会把它和真实的DOM做对比，来判断是否有必要做出修改。
+    ReactDOM.render():React的基本方法，用于将模版转换HTML语言，渲染DOM，并插入指定的DOM节点中。
+    3个参数
+     * 第一个：模版的渲染内容（HTML形式）
+     * 第二个：这段模版需要插入的DOM节点
+     * 第三个：渲染后的回调，一般不用
+
+
+  5.组件
+
+   5.1:定义组件
+    1）React.createClass 方法用于生成一个组件类 HelloMessage。
+    2）<HelloMessage /> 实例组件类并输出信息。（驼峰命名）
+    如：
+    <div id="example"></div>
+
+    <script type="text/babel">
+      //创建一个组件类
+      var HelloMessage = React.createClass({
+        render: function () {
+            return <h1>Hello World</h1>
+        }
+      });
+
+     ReactDOM.render(<HelloMessage/>, document.getElementById('example'));
+    </script>
+
+   5.2:组件样式
+     1）内联样式
+     2）对象样式
+     3）选择器样式
+
+     注意：在React和HTML5中设置样式时的书写格式是有区别的
+      1）HTML5以;结尾，React以,结尾
+      2）HTML5 key、value都不加引号
+         React中属于JavaScript对象，key的名字不能出现"－"，需要使用驼峰命名法。如果value为字符串，需要加引号。
+      3）HTML5 中value如果是数字，需要带单位，React不不要带单位。
+
+    eg:
+
+    <style>
+       .pStyle {
+          font-size: 20px;
+       }
+    </style>
+
+    <script type="text/babel">
+
+        //创建设置h1样式对象
+        var hStyle = {
+            backgroundColor: "green",
+            color: 'red'
+        }
+
+        //在react中使用选择器样式是属性名使用className
+        var ShowMessage = React.createClass({
+            render: function () {
+                return (
+                        <div style={{
+                            background: 'yellow',
+                            borderWidth: 5,
+                            borderColor: "black",
+                            borderStyle: "solid"
+                        }}>
+                            <h1 style={hStyle}>{this.props.fristRow}</h1>
+                            <h1 className="pStyle">{this.props.secondRow}</h1>
+                        </div>
+                );
+            }
+        });
+
+        ReactDOM.render(<ShowMessage fristRow="你好" secondRow="zzy"/>,
+                document.getElementById('container'));
+
+    </script>
+
+  6.state
+    每个react组件都可以拥有自己的state，通过与用户的交互，实现不同状态，然后渲染 UI，让用户界面和数据保持一致。React 里，只需更新组件的 state，然后根据新的 state 重新渲染用户界面（不要操作 DOM）。  
+    state可以通过setState来修改，也可以使用getInitialState方法提供一组默认值。只要setState被调用，render就会被调用。如果render函数的返回值有变化，虚拟DOM就会更新
+    真实的DOM也会被更新，最终用户会在浏览器中看到变化。
+
+     eg：
+    <script type="text/babel">
+
+    var LikeButton = React.createClass({
+        //定义初始状态
+        getInitialState: function () {
+            return {liked: false};
+        },
+        handleClick: function () {
+            this.setState({liked: !this.state.liked});
+        },
+        render: function () {
+            var text = this.state.liked ? '喜欢' : '不喜欢';
+            return ( <p onClick={this.handleClick}>你<b>{text}</b>我，点击切换</p>);
+        }
+    });
+
+    React.render(<LikeButton/>, document.getElementById('example'));
+
+</script>
+
+  7.props
+   7.1 定义
+    state 和 props 主要的区别在于 props 是不可变的，而 state 可以根据与用户交互来改变。这就是为什么有些容器组件需要定义 state 来更新和修改数据。 而子组件只能通过 props 来传递数据。
+    props是组件自身的属性，一般用于嵌套的内外层组件中，负责传递信息（通常又父层组件向子层组件传递）
+    props对象中的属性与组件的属性一一对应，不能直接去修改props中的属性值
+
+  如：
+  <script type="text/babel">
+
+      //此次编写react代码
+      var WebName = React.createClass({
+          render: function () {
+              return <h1>{this.props.webname}</h1>
+          }
+      });
+
+      var WebLink = React.createClass({
+          render: function () {
+              return <a href={this.props.weblink}>{this.props.weblink}</a>
+          }
+      });
+
+      var WebShow = React.createClass({
+          render: function () {
+              return (
+                      <div>
+                          <WebName webname={this.props.wname}/>
+                          <WebLink weblink={this.props.wlink}/>
+                      </div>
+              )
+
+          }
+      });
+
+      //渲染
+      ReactDOM.render(
+              <WebShow wname="zyzhang" wlink="http://blog.csdn.net/zhangsx101/article/details/53172163"/>,
+              document.getElementById('container')
+      );
+   </script>
+
+   7.2 ...this.props
+     props提供的语法糖，可以将父组件中的全部属性复制给子组件
+
+    如：
+      var Link = React.createClass({
+            render: function () {
+                return <a {...this.props}>{this.props.name}</a>
+            }
+        });
+
+        ReactDOM.render(
+                <Link href="http://blog.csdn.net/zhangsx101/article/details/53172163" name="我的博客"/>,
+                document.getElementById('container2')
+        )
+
+   7.3 特例：this.props.children
+   children是一个例外，不是跟组件的属性对应的。表示组件的所有子节点
+   如：
+   var ListComponent = React.createClass({
+           render: function () {
+               return (
+                       <ul>
+                           {
+                               /**
+                                * 列表项数量以及内容不确定，在创建模版时才能确定
+                                * 利用this.props.children从父组件获取需要展示的列表项内容
+                                *
+                                * 获取到列表项内容后，需要遍历children，逐项进行设置
+                                * 使用React.Children.map方法
+                                * 返回值：数组对象
+                                */
+                               React.Children.map(this.props.children, function (child) {
+                                   //child是遍历得到的父组件的子节点
+                                   return <li>{child}</li>
+                               })
+                           }
+                       </ul>
+               );
+           }
+       });
+
+       //渲染
+       ReactDOM.render(
+               (<ListComponent>
+                   <h1>我的博客</h1>
+                   <a href="http://blog.csdn.net/zhangsx101/article/details/53172163">点击打开连接</a>
+               </ListComponent>),
+               document.getElementById('container3')
+       );
+
+   7.4 propTypes
+   用于验证组件实例的属性是否符合要求
+   如：
+   var ShowTitle = React.createClass({
+           propTypes: {
+               title: React.PropTypes.string.isRequired
+           },
+           render: function () {
+               return <h1>{this.props.title}</h1>
+           }
+       });
+
+       //渲染
+       ReactDOM.render(
+               <ShowTitle title="123"/>,
+               document.getElementById('container4')
+       );
+
+   7.5 getDefaultProps
+    设置组件属性的默认值
+   如：
+   var MyTile = React.createClass({
+          getDefaultProps:function () {
+              return{
+                  title:"张正宜"
+              };
+          },
+           render:function () {
+               return <h1>{this.props.title}</h1>
+           }
+       });
+
+       //渲染
+       ReactDOM.render(
+               <MyTile/>,
+               document.getElementById('container5')
+       );
+
+  8. 生命周期
+    1.组件生命周期可分成三个状态：
+      Mounting：组件挂载 已插入真实 DOM
+      Updating：组件更新 正在被重新渲染
+      Unmounting:组件移除 已移除真实 DOM
+
+    2.组件的生命周期可分为四个阶段：
+       创建 实例化 更新 销毁
+
+
+
+

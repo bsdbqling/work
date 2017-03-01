@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/comm.css">
+</head>
+<body>
+<div class="maindiv">
+    <div class="form-group">
+        <input id="username" type="text" class="form-control" placeholder="用户名" required="">
+    </div>
+    <div class="form-group">
+        <input id="password" type="password" class="form-control" placeholder="密码" required="">
+    </div>
+    <button style="margin-top: 5%;" onclick="register()" id="btnRegister" class="btn btn-primary block full-width">注 册
+    </button>
+</div>
+</body>
+<script src="js/jquery-1.11.2.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>-->
+<script>
+    function register() {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var data = {"username": username, "password": password};
+        if (username == '') {
+            alert('用户名格式不正确!');
+            return;
+        }
+        if (password == '') {
+            alert('密码不能为空!');
+            return;
+        }
+        $.ajax({
+            url: 'http://localhost:1337/register',
+            type: 'POST',
+            data: data,
+            success: function (data, status) {
+                if (status == 'success') {
+                    console.log('success');
+                    location.href = 'index';
+                }
+            },
+            error: function (data, status, e) {
+                if (status == "error") {
+                    alert('注册失败，请重试');
+//                    location.href = 'login';
+                    console.log('error');
+                }
+            }
+        });
+    }
+</script>
+</html>

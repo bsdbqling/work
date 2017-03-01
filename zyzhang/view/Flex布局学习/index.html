@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flexbox</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            display: -webkit-box; /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+            display: -moz-box; /* 老版本语法: Firefox (buggy) */
+            display: -ms-flexbox; /* 混合版本语法: IE 10 */
+            display: -webkit-flex; /* 新版本语法： Chrome 21+ */
+            display: flex; /* 新版本语法： Opera 12.1, Firefox 22+ */
+
+            /*水平居中*/
+            /*老版本语法*/
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            /*混合版本语法*/
+            -ms-flex-pack: center;
+            /*新版本语法*/
+            -webkit-justify-content: center;
+            justify-content: center;
+
+            margin: 0;
+            height: 100%;
+            width: 100% /* needed for Firefox */
+        }
+
+        /*实现文本垂直居中*/
+        h1 {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+
+            height: 10rem;
+        }
+    </style>
+</head>
+<body>
+<h1>让我们攀上高峰的不是奇招，而是孰能生巧的基本功。</h1>
+</body>
+</html>

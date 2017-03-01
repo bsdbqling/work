@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .flexcontainer {
+            display: -webkit-flex;
+            display: flex;
+            /*行显示（默认）*/
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            /*列显示*/
+            /*-webkit-flex-direction: column;*/
+            /*flex-direction: column;*/
+            /*-webkit-align-items: center;*/
+            /*align-items: center;*/
+
+            -webkit-justify-content: center;
+            justify-content: center;
+
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            /*-webkit-flex-flow: row wrap;*/
+            /*flex-flow: row wrap;*/
+            -webkit-align-content: flex-end;
+            align-content: flex-end;
+        }
+        .flexitem {
+            width: 80px;
+            height: 80px;
+            background-color: #1dc5a3;
+            margin: 5px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="flexcontainer">
+    <div class="flexitem"></div>
+    <div class="flexitem"></div>
+    <div class="flexitem"></div>
+    <div class="flexitem"></div>
+    <div class="flexitem"></div>
+    <div class="flexitem"></div>
+    <div class="flexitem"></div>
+    <div class="flexitem"></div>
+</div>
+</body>
+</html>

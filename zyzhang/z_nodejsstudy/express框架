@@ -1,0 +1,92 @@
+一、Express安装和创建项目
+
+1.express是一个简洁而灵活的node.js Web应用框架（提供web支持和Socket支持）。
+
+2.在Mac下安装express：
+	2.1 如果是全局安装需要添读写权限，步骤如下：
+		2.1.1 找到/usr/local/lib/node_modules/npm目录，打开文件夹的“显示简介”面板,找到共享与权限,添加读写权限即可。
+    2.2 安装：在dos命令下输入：npm install -g express （－g表示全局安装）即可完成安装。
+    2.3 严重安装是否完成：
+    	2.3.1 在dos命令下输入 express -v 后提示-bash: express: command not found。经各种搜索终于找到原因。
+    	原因是是 express 4需要通过 下面的命令安装npm install -g express-generator。
+    	2.3.2 继续按照还是权限问题导致安装失败，这里提高另外一个解决办法就是在dos命令下输入：sudo npm install -g express-generator
+    	会提示你输入密码，此时输入密码即可完成安装。
+    	2.3.3 继续验证，正确输入版本信息。到此终于装好了。
+
+3.在dos创建项目：
+    3.1 创建：同样在dos命令下创建，首先需要找到需要安装的路径，输入：express -e segment (segment项目名称)。
+    3.2 创建完成：进入到segment目录下，输入ls，可看到生成了这几个文件 app.js，package.json，routes，bin，public	，views。
+    3.2 安装：npm install 安装完成之后会自动安装package.json中的插件。我们会发现目录下多了个node_modules文件夹。
+
+4.在webStrom工具下创建项目：新建一个Node.js Express App (选择模版EJS)
+
+5.添加中间件：(以上安装虽然可以，但后面新加的需要这样安装)
+    npm install xxx --save
+    如：处理文件上传插件 npm install multer --save 安装完成后会发现在 package.json多了这么一行 ："multer": "^1.2.0"。
+
+6.端口修改在bin/www文件中，默认3000。
+
+7.启动 npm start (在浏览器中输入：localhost:3000 即可看到效果)。
+
+二、简单介绍
+
+1.项目目录
+  app.js：项目入口
+  node_modules:存放项目的依赖库
+  package.json:项目依赖配置及开发者信息
+  public:静态文件如 css,js,img 
+  routes: 路由文件
+  views:页面文件
+
+2.详细介绍：
+  2.1 打开views文件发现index.ejs很不习惯，所以需要对app.js进行简单改动：“app.set('view engine', 'ejs')”
+  改成“app.engine('.html', ejs.__express);app.set('view engine', 'html')”。
+  其中：app.engine(ext, callback) 注册模板引擎的 callback用来处理ext扩展名的文件。
+  （__express不用去care，其实就是ejs模块的一个公共属性，表示要渲染的文件扩展名）
+  2.2 use方法：是express注册中间件的方法，它返回一个函数。
+  app.use([path], function) 使用中间件 function,可选参数path默认为"/"。
+  2.3 app.render(view, [options], callback) 渲染view, callback用来处理返回的渲染后的字符串
+
+  2.4 set方法用于指定变量的值。
+
+  2.5 response对象：
+    （1）response.redirect方法：
+        response.redirect方法允许网址的重定向。
+        response.redirect("/hello/anime");
+        response.redirect("http://www.example.com");
+        response.redirect(301, "http://www.example.com"); 
+
+   （2）response.sendFile方法：
+        response.sendFile方法用于发送文件。
+        response.sendFile("/path/to/anime.mp4");
+
+   （3）response.render方法
+        response.render方法用于渲染网页模板。
+        app.get("/", function(request, response) {
+          response.render("index", { message: "Hello World" });
+        });
+        上面代码使用render方法，将message变量传入index模板，渲染成HTML网页。
+
+  2.6 requst对象：
+   （1）request.ip
+         request.ip属性用于获得HTTP请求的IP地址。
+
+   （2）request.files
+         request.files用于获取上传的文件。
+
+
+三、Node的小基友supervisor 和 forever 介绍
+
+1. supervisor：
+   每次修改代码后会自动重启。懒程序员就指望这种省事省力的工具活着了:)
+　 安装：npm install -g supervisor
+　 执行：supervisor app.js
+
+2.forever：
+  虚拟机一关node服务就关了，不过forever可以让node服务不停止
+
+
+
+
+
+

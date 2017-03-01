@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS实现图片左滑右滑</title>
+    <style>
+        * {
+            font-family: 微软雅黑;
+        }
+
+        /*图片大小280x80*/
+        .jiu {
+            width: 180px;
+            overflow: hidden; /*超出部分隐藏*/
+            float: left; /*左浮动*/
+            margin-left: 80px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+<div class="jiu"><img src="../../../img/imgscroll/jiu.jpg"/></div>
+</body>
+<script>
+    <!--鼠标移入移出-->
+    var x = document.getElementsByClassName("jiu");
+    /****************************纠结半天 i一直等于x.length*****************************************/
+    //    for (var i = 0; i < x.length; i++) {
+    //        x[i].onmouseenter = function () {
+    //            console.log(i);
+    //            document.getElementsByTagName("img")[0].style.marginLeft = "-100px";
+    //        }
+    //    }
+    /****************************纠结半天******************************************************/
+
+    //鼠标移入
+    for (var i = 0; i < x.length; i++) {
+        (function (i) {
+            x[i].onmouseenter = function () {
+                document.getElementsByTagName("img")[i].style.marginLeft = "-100px";
+                document.getElementsByTagName("img")[i].style.transition = "all linear 500ms";
+            };
+        })(i);
+    }
+
+    //鼠标离开
+    for (var i = 0; i < x.length; i++) {
+        (function (i) {
+            x[i].onmouseleave = function () {
+                document.getElementsByTagName("img")[i].style.marginLeft = "0px";
+                document.getElementsByTagName("img")[i].style.transition = "all linear 500ms";
+            };
+        })(i);
+    }
+
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>JS实现水果选择</title>
+    <style>
+        * {
+            font-family: 微软雅黑;
+        }
+
+        select {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<form action="javascript:">
+    <select name="" id="s1" size="2">
+        <option value="">西瓜</option>
+        <option value="">苹果</option>
+        <option value="">橙子</option>
+        <option value="">橘子</option>
+        <option value="">梨</option>
+    </select>
+
+    <input type="button" value=" >> " id="btn">
+
+    <select name="" id="s2" size="2">
+
+    </select>
+</form>
+</body>
+<script>
+    btn = document.getElementById('btn');
+    s1 = document.getElementById('s1');
+    s2 = document.getElementById('s2');
+    opts = s1.options;
+
+    btn.onclick=function () {
+        idx = s1.selectedIndex;
+//        s2.add(opts[idx]);
+        s2.innerHTML+=opts[idx].outerHTML;
+    }
+</script>
+</html>

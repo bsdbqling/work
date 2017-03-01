@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BUY</title>
+    <link rel="stylesheet" href="../sourse/bootstrap.min.css">
+    <script src="../sourse/jquery-3.1.1.min.js"></script>
+    <script src="../sourse/bootstrap.min.js"></script>
+    <style>
+        .product{
+            margin: 10px 10px 10px 0;
+            border:1px solid #e5e5e5;
+        }
+        .product em{
+            color: #c40000;
+            font-weight: 800;
+            font-size: 26px;
+        }
+        .shopCart{
+            position: fixed;
+            top:10px;
+            right: 10px;
+        }
+        .shopCart img {
+            width: 80px;
+            height: 80px;
+        }
+        .shopCart .CartNum{
+            position: absolute;
+            top:0;
+            left: 30px;
+            display: block;
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            background-color: #5bc0de;
+            text-align: center;}
+    </style>
+    <script>
+        var CartNum=0;
+        $(document).ready(function () {
+            $('.addCart').on('click',function () {
+//                alert('asdasdsa')
+                var shop=$('.shopCart');
+                var addImg=$(this).parent().parent('.product').find('img').eq(0);
+                //克隆
+                var cloneImg=addImg.clone();
+                cloneImg.css({
+//                    'border':'2px solid red',
+                    'width':'250px',
+                    'weight':'250px',
+                    'position':'absolute',
+                    'top':addImg.offset().top,
+                    'left':addImg.offset().left,
+                    'z-index':'20',
+                    'opacity':'0.5'//透明度
+                });
+                cloneImg.appendTo($('body')).animate({
+                    'width':20,
+                    'weight':20,
+                    'top':shop.offset().top+30,
+                    'left':shop.offset().left+30
+                },2000).animate({
+                    'width':0,
+                    'weight':0
+                },200,function () {
+                    //购物数量统计
+                    $('.CartNum').html(++CartNum);
+                    //移除产生的图片
+                    $(this).detach();
+                });
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 product">
+                <p><img src="img/TB10SC9KpXXXXbfaXXXvbdW9pXX_040417.jpg_b.jpg" alt="电视" class="img-responsive"></p>
+                <p>Hisense/海信 LED55EC720US</p>
+                <p>price:<em>10000</em></p>
+                <p><button class="btn btn-primary btn-sm addCart">加入购物车</button></p>
+            </div>
+            <div class="col-lg-3 product">
+                <p><img src="img/TB1QInVNVXXXXb.XFXXh9Y28VXX_032912.jpg_b.jpg" alt="电视" class="img-responsive"></p>
+                <p>Hisense/海信 LED55EC720US</p>
+                <p>price:<em>80000</em></p>
+                <p><button class="btn btn-primary btn-sm addCart">加入购物车</button></p>
+            </div>
+            <div class="col-lg-3 product">
+            <p><img src="img/TB1KMzsKFXXXXavXVXX4rR48VXX_031605.jpg_b.jpg" alt="电视" class="img-responsive"></p>
+            <p>Hisense/海信 LED55EC720US</p>
+            <p>price:<em>7777</em></p>
+            <p><button class="btn btn-primary btn-sm addCart">加入购物车</button></p>
+        </div>
+            <div class="col-lg-3 product">
+            <p><img src="img/TB1kUk0OXXXXXaLapXXpwAc7FXX_012622.jpg_b.jpg" alt="电视" class="img-responsive"></p>
+            <p>Hisense/海信 LED55EC720US</p>
+            <p>price:<em>9999</em></p>
+            <p><button class="btn btn-primary btn-sm addCart">加入购物车</button></p>
+        </div>
+            <div class="col-lg-3 product">
+            <p><img src="img/TB1pBz8KpXXXXXsXVXXVGK08XXX_020552.jpg_b.jpg" alt="电视" class="img-responsive"></p>
+            <p>Hisense/海信 LED55EC720US</p>
+            <p>price:<em>10000</em></p>
+            <p><button class="btn btn-primary btn-sm addCart">加入购物车</button></p>
+        </div>
+            <div class="col-lg-3 product">
+            <p><img src="img/TB1PFdHLXXXXXXSaFXXLn5g8pXX_023139.jpg_b.jpg" alt="电视" class="img-responsive"></p>
+            <p>Hisense/海信 LED55EC720US</p>
+            <p>price:<em>6666</em></p>
+            <p><button class="btn btn-primary btn-sm addCart">加入购物车</button></p>
+            </div>
+
+        </div>
+    </div>
+<div class="container">
+    <div class="row container">
+        <div class="shopCart">
+            <img alt="go" class="img-responsive" src="../img/ggg.jpg">
+            <span class="CartNum">0</span>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

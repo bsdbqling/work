@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta charset="utf-8" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind</title>
+    <script src="../../assets/js/vue.js"></script>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <style>
+        a {
+            cursor: pointer;
+        }
+
+        .colorRed {
+            color: red;
+        }
+
+        .fontSize {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>v-bind</h1>
+    <hr>
+        <a v-on:click="choicePic('../assets/img/img1.jpg')">img1</a>
+        <a v-on:click="choicePic('../assets/img/img2.jpg')">img2</a>
+        <a v-on:click="choicePic('../assets/img/img3.jpg')">img3</a>
+        <a v-on:click="choicePic('../assets/img/img4.jpg')">img4</a>
+    <div>
+        <img v-bind:src="imgSrc" v-bind:alt="imgSrc" :width="width" :title="imgTitle"/>
+    </div>
+    <p v-bind:class="[isColor ? 'colorRed' : 'fontSize']">123</p>
+    <p v-bind:class="{'isColor': colorRed}">456</p>
+
+</div>
+<script>
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            imgSrc: "../assets/img/img1.jpg",
+            width: "300px",
+            imgTitle: "img",
+            isColor: true
+        },
+        methods: {
+            choicePic: function(src) {
+                this.imgSrc = src;
+            }
+        }
+    });
+</script>
+</body>
+</html>

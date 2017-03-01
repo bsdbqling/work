@@ -1,0 +1,24 @@
+<meta charset="utf-8">
+<script src="../../assets/js/vue.js"></script>
+<style>
+
+</style>
+<div id="app">
+    <input type="text" v-model="message"/>
+    <input type="button" v-on:click="test()" value="获取message" />
+</div>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            // 数据字段
+            message: "hello vue ！！"
+        },
+        methods: {
+            // 函数
+            test: function() {
+                alert(this.message);
+            }
+        }
+    });
+</script>

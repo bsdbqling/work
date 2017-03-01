@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+
+.topbar {
+    height: 110px;
+    background: #48525e;
+    border-bottom: none;
+    padding: 0;
+    color: #fff;
+}
+
+.topbar_left {
+    line-height: 110px;
+}
+
+.topbar_right {
+    margin-top: 80px;
+    margin-right: 15px;
+}
+
+.login_ul li {
+    display: block;
+    font-size: 16px;
+    margin-bottom: auto;
+}
+.main{
+    background-color: #f2f2f2;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom:1px solid  #e7e7e7;
+}
+
+.main > a {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 30px;
+}
