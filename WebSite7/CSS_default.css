@@ -1,0 +1,58 @@
+﻿/****重定义全局元素样式****/
+
+body 
+{   
+     min-width:600px; /* 自适应大小；最小为600px宽度，以确保页面显示结构*/
+     margin:0px; padding:0px; 
+     font-family:Arial, 微软雅黑, 宋体; 
+}
+
+div,img,h1,h2,h3,h4,h5,p,ul,ol,li
+{ margin:0px; padding:0px; }
+a { text-decoration:none; color:Gray;}
+a:hover { color:#a30;}
+
+
+
+
+/****常用类元素样式定义****/
+/*1. 浮动相关类*/
+.fl { float:left;}
+.fr { float:right;}
+.clr { clear:both;}
+
+
+/*2. 通用文字类*/
+h1.h1ttl /*标题*/
+{ text-align:center;
+  padding:10px; padding-bottom:15px;
+  background-image:url(imgs/back_head.jpg); background-repeat:repeat-x;  }
+
+h2.h2ttl /*页顶标题*/
+{ padding:5px 0px 5px 0px;
+  margin-bottom:10px;  }
+
+
+
+p.pMemo /*普通叙述性文本段落*/
+    { margin:10px;
+      text-indent:2em; /* 首行缩进 */ 
+      font-size:12px;
+      color:gray; 
+      line-height:20px;  }
+
+
+
+
+
+.blist_menu
+{ border-bottom:1px solid gray; border-top:1px solid gray;}
+
+.blist_menu li
+{ display:inline-block;
+  padding:5px; margin:10px;
+    }
+
+.blist_menu li+li
+{ border-left:1px solid silver;}
+

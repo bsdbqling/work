@@ -1,0 +1,32 @@
+﻿body { width:500px; margin:0px auto; padding:0px;}
+h2,h3,h4{ text-align:center;}
+h2 { font-size:20px; padding:8px; border-bottom:1px solid black;
+     margin:3px; }
+img { border:0px;}
+
+span.w250 { display:inline-block; width:250px;}
+
+hr { height:1px; margin:5px 0px 5px 0px;}
+
+#mydiv div { padding:4px;}
+
+.tc { text-align:center;}
+
+div.d1  {border-bottom:1px dotted silver;}
+
+#div_result,#pnl_result { border:2px solid gray; min-height:40px;}
+
+
+.chk1 { display:block;}
+
+
+.img1
+    { width:50px;}
+    
+
+p {color:RGB(200,20,20);}
+
+.pnl
+    { padding:20px; border:2px solid gray;}
+
+
